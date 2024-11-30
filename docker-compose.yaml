@@ -1,0 +1,19 @@
+name: "ppdb-sekolah-alam-krw"
+
+services:
+  mariadb-ppdb-saka-krw:
+    container_name: mariadb-ppdb-saka-krw
+    image: mariadb:latest
+    ports:
+      - 3310:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: toor
+      MYSQL_DATABASE: ppdb_saka_krw
+      MYSQL_USER: ppdb_saka_krw
+      MYSQL_PASSWORD: ppdb_saka_krw
+    volumes:
+      - mariadb-ppdb-saka-krw-data:/var/lib/mysql
+
+volumes:
+  mariadb-ppdb-saka-krw-data:
+    name: mariadb-ppdb-saka-krw-data
