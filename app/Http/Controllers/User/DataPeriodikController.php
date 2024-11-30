@@ -11,9 +11,13 @@ class DataPeriodikController extends Controller
 {
     public function index()
     {
+        $dataPeriodik = DataPeriodik::where('noreg_ppdb', session('noreg_ppdb'))->first();
+        $dataKesejahteraan = DataKesejahteraan::where('noreg_ppdb', session('noreg_ppdb'))->first();
         $data = [
             'title' => 'Data Periodik',
             'active' => 'data-periodik',
+            'dataPeriodik' => $dataPeriodik,
+            'dataKesejahteraan' => $dataKesejahteraan
         ];
 
         return view('user.data-periodik', $data);
