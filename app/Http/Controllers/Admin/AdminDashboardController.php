@@ -12,7 +12,7 @@ class AdminDashboardController extends Controller
         $data = [
             'title' => 'Dashboard',
             'active' => 'dashboard',
-            'usingDataTables' => true
+            'usingDatatables' => false
         ];
         return view('admin.admin-dashboard', $data);
     }
