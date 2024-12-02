@@ -4,8 +4,10 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\User;
 use App\Models\Biodata;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,5 +24,10 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         Biodata::factory(100)->create();
+        User::create([
+            'name' => 'Peserta Didik 1',
+            'email' => 'siswa@siswa.com',
+            'password' => Hash::make('password'),
+        ]);
     }
 }
