@@ -24,6 +24,13 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
+                @if (session()->has('loginSession'))
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h5><i class="icon fas fa-check"></i> Data berhasil disimpan!</h5>
+                        Data yang anda masukan berhasil disimpan. Silahkan lanjut untuk mengisi Data Orang Tua.
+                    </div>
+                @endif
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <div class="col-12">
