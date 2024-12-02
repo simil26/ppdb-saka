@@ -10,6 +10,10 @@ class LoginController extends Controller
 {
     public function index()
     {
+        if (session()->has('email')) {
+            return redirect()->route('user.dashboard');
+        }
+
         $data = [
             'title' => 'Login',
         ];
@@ -34,6 +38,8 @@ class LoginController extends Controller
             if ($auth) {
                 $request->session()->put('email', $request->email);
                 return redirect()->route('user.dashboard')->with('loginSession', 'Login berhasil');
+            } else {
+                return redirect()->back()->withInput()->with('loginError', 'Email atau password salah');
             }
         } catch (\Exception $e) {
             return redirect()->back()->withInput()->withErrors($e->getMessage());
