@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminVerifikasiPendaftarController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\User\DataDiriController;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\UploadFilesController;
@@ -32,9 +33,9 @@ Route::get('user/data-diri', [DataDiriController::class, 'index'])->name('user.d
 Route::get('user/data-orang-tua', [DataOrangTuaController::class, 'index'])->name('user.dataOrangTua');
 Route::get('user/data-periodik', [DataPeriodikController::class, 'index'])->name('user.dataPeriodik');
 Route::get('user/upload-files', [UploadFilesController::class, 'index'])->name('user.uploadFiles');
-Route::get('user/logout', [DashboardController::class, 'index'])->name('user.logout');
 
 Route::post('login', [LoginController::class, 'login'])->name('loginAttempt');
+Route::get('logout', [LogoutController::class, 'logout'])->name('logoutAttempt');
 
 Route::post('user/data-diri/simpan', [DataDiriController::class, 'store'])->name('user.dataDiri.store');
 Route::post('user/data-diri/update', [DataDiriController::class, 'update'])->name('user.dataDiri.update');
