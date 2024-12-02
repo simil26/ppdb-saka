@@ -33,6 +33,9 @@ Route::get('user/data-orang-tua', [DataOrangTuaController::class, 'index'])->nam
 Route::get('user/data-periodik', [DataPeriodikController::class, 'index'])->name('user.dataPeriodik');
 Route::get('user/upload-files', [UploadFilesController::class, 'index'])->name('user.uploadFiles');
 Route::get('user/logout', [DashboardController::class, 'index'])->name('user.logout');
+
+Route::post('login', [LoginController::class, 'login'])->name('loginAttempt');
+
 Route::post('user/data-diri/simpan', [DataDiriController::class, 'store'])->name('user.dataDiri.store');
 Route::post('user/data-diri/update', [DataDiriController::class, 'update'])->name('user.dataDiri.update');
 Route::post('user/data-orang-tua', [DataOrangTuaController::class, 'store'])->name('user.store.dataOrangTua');
