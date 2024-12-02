@@ -10,10 +10,18 @@
             <div class="card-body">
                 <p class="login-box-msg">Login terlebih dahulu untuk melakukan pendaftaran</p>
 
+                @if (session()->has('loginError'))
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h5><i class="icon fas fa-check"></i> Login Gagal!</h5>
+                        {{ session('loginError') }}.
+                    </div>
+                @endif
+
                 <form action="{{ route('loginAttempt') }}" method="post">
                     @csrf
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Email" value="{{ old('email') }}">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
