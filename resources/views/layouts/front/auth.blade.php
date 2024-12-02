@@ -24,6 +24,7 @@
     <script src="{{ url('assets/adminlte') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="{{ url('assets/adminlte') }}/dist/js/adminlte.min.js"></script>
+    @stack('scripts')
 </body>
 
 </html>
