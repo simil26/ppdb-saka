@@ -5,14 +5,15 @@
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-                <a href="../../index2.html" class="h1"><b>PPDB</b> Saka</a>
+                <a href="{{ url('') }}" class="h1"><b>PPDB</b> Saka</a>
             </div>
             <div class="card-body">
                 <p class="login-box-msg">Login terlebih dahulu untuk melakukan pendaftaran</p>
 
-                <form action="../../index3.html" method="post">
+                <form action="{{ route('loginAttempt') }}" method="post">
+                    @csrf
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Email">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Email">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -20,7 +21,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Password">
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -57,3 +58,16 @@
     </div>
     <!-- /.login-box -->
 @endsection
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('#show-password').on('change', function() {
+                if ($(this).is(':checked')) {
+                    $('input#password').attr('type', 'text');
+                } else {
+                    $('input#password').attr('type', 'password');
+                }
+            });
+        });
+    </script>
+@endpush
