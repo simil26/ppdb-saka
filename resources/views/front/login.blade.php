@@ -47,7 +47,10 @@
                         </div>
                         <!-- /.col -->
                         <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Login</button>
+                            <button type="submit" class="btn btn-primary btn-block">
+                                <i class="fas fa-sign-in-alt"></i>
+                                Login
+                            </button>
                         </div>
                         <!-- /.col -->
                     </div>
@@ -57,7 +60,10 @@
                     <a href="forgot-password.html">Lupa kata sandi?</a>
                 </p>
                 <p class="mb-0 text-center">
-                    <a href="register.html" class="text-center btn btn-primary">Buat akun baru!</a>
+                    <a href="{{ route('register') }}" class="text-center btn btn-primary">
+                        <i class="fas fa-user-plus"></i>
+                        Buat akun baru!
+                    </a>
                 </p>
             </div>
             <!-- /.card-body -->
