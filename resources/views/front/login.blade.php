@@ -17,6 +17,13 @@
                         {{ session('loginError') }}.
                     </div>
                 @endif
+                @if (session()->has('registerSuccess'))
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h5><i class="icon fas fa-check"></i> Registrasi Berhasil!</h5>
+                        {{ session('registerSuccess') }}.
+                    </div>
+                @endif
 
                 <form action="{{ route('loginAttempt') }}" method="post">
                     @csrf
