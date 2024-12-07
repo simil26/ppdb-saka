@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Biodata;
 
 class DataPendaftarController extends Controller
 {
@@ -12,6 +12,7 @@ class DataPendaftarController extends Controller
         $data = [
             'page_title' => 'Data Pendaftar',
             'usingDatatables' => true,
+            'dataPendaftar' => Biodata::all(),
         ];
 
         return view('front.data-pendaftar', $data);
