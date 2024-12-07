@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\User\DataDiriController;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\UploadFilesController;
@@ -34,6 +35,8 @@ Route::get('user/data-orang-tua', [DataOrangTuaController::class, 'index'])->nam
 Route::get('user/data-periodik', [DataPeriodikController::class, 'index'])->name('user.dataPeriodik');
 Route::get('user/upload-files', [UploadFilesController::class, 'index'])->name('user.uploadFiles');
 
+Route::get('register', [RegisterController::class, 'index'])->name('register');
+Route::post('register', [RegisterController::class, 'register'])->name('register.store');
 Route::post('login', [LoginController::class, 'login'])->name('loginAttempt');
 Route::get('logout', [LogoutController::class, 'logout'])->name('logoutAttempt');
 
