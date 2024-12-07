@@ -3,7 +3,7 @@
         <div class="container">
             <a class="navbar-brand" href="{{ url('') }}">
                 <img src="{{ url('assets/img/logo-xs.webp') }}" alt="Logo Sekolah Alam Karawang" style="width:48px; height:48px;">
-                <span class="fw-semibold">PPDB Sekolah Alam Karawang</span>
+                <span class="fw-semibold">PPDB SD Alam Amani Karawang</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
