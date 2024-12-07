@@ -74,16 +74,76 @@
 
 
     {{-- Fasilitas Section --}}
-    <div class="fasilitas-wrapper mx-0 bg-light" id="fasilitas">
+    <div class="kegiatan-wrapper bg-light mx-0" id="kegiatan">
         <div class="container py-5">
             <div class="row pt-3">
                 <div class="col-12 text-center">
-                    <h3 class="fasilitas-head">
-                        Fasilitas
+                    <h3 class="kegiatan-head">
+                        Kegiatan
                     </h3>
+                </div>
+            </div>
+            <div class="row pt-3">
+                <div class="col-12">
+                    <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="{{ asset('assets/img/kegiatan/backpacker.jpeg') }}" class="d-block mx-auto w-25" alt="backpacker">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="{{ asset('assets/img/kegiatan/cooking-day.jpeg') }}" class="d-block mx-auto w-25" alt="cooking-day">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="{{ asset('assets/img/kegiatan/ekspedisi.jpeg') }}" class="d-block mx-auto w-25" alt="ekspedisi">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="{{ asset('assets/img/kegiatan/fun-camp.jpeg') }}" class="d-block mx-auto w-25" alt="fun-camp">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="{{ asset('assets/img/kegiatan/gardening.jpeg') }}" class="d-block mx-auto w-25" alt="gardening">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="{{ asset('assets/img/kegiatan/homevisit.jpeg') }}" class="d-block mx-auto w-25" alt="homevisit">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="{{ asset('assets/img/kegiatan/internship.jpeg') }}" class="d-block mx-auto w-25" alt="internship">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="{{ asset('assets/img/kegiatan/literasi.jpeg') }}" class="d-block mx-auto w-25" alt="literasi">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="{{ asset('assets/img/kegiatan/market-day.jpeg') }}" class="d-block mx-auto w-25" alt="market-day">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="{{ asset('assets/img/kegiatan/outing-class.jpeg') }}" class="d-block mx-auto w-25" alt="outing-class">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="{{ asset('assets/img/kegiatan/performance.jpeg') }}" class="d-block mx-auto w-25" alt="performance">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="{{ asset('assets/img/kegiatan/supercamp.jpeg') }}" class="d-block mx-auto w-25" alt="supercamp">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="{{ asset('assets/img/kegiatan/survival.jpeg') }}" class="d-block mx-auto w-25" alt="survival">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    {{-- End Fasilitas Section --}}
+    {{-- End Kegiatan Section --}}
 @endsection
+@push('scripts')
+    <script>
+        $(".carousel").carousel();
+    </script>
+@endpush
