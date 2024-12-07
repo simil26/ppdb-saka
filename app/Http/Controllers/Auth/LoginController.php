@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -36,7 +37,9 @@ class LoginController extends Controller
             $credentials = $this->validate($request, $rules, $messages);
             $auth = Auth::attempt($credentials);
             if ($auth) {
-                $request->session()->put('email', $request->email);
+                $user = User::where('email', $request->email)->first();
+                $request->session()->put('email', $user->email);
+                $request->session()->put('name', $user->name);
                 return redirect()->route('user.dashboard')->with('loginSession', 'Login berhasil');
             } else {
                 return redirect()->back()->withInput()->with('loginError', 'Email atau password salah');
