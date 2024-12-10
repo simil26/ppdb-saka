@@ -33,7 +33,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('admin.dataPendaftar') }}" class="nav-link {{ $active == 'data-diri' ? 'active' : '' }}">
+                    <a href="{{ route('admin.dataPendaftar') }}" class="nav-link {{ $active == 'data-pendaftar' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
                             Data Pendaftar
@@ -41,7 +41,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('admin.verifikasiPendaftar') }}" class="nav-link {{ $active == 'data-orang-tua' ? 'active' : '' }}">
+                    <a href="{{ route('admin.verifikasiPendaftar') }}" class="nav-link {{ $active == 'verifikasi-pendaftar' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-user-check"></i>
                         <p>
                             Verifikasi Pendaftar
@@ -49,7 +49,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('user.dataPeriodik') }}" class="nav-link {{ $active == 'data-periodik' ? 'active' : '' }}">
+                    <a href="{{ route('admin.hasilSeleksi') }}" class="nav-link {{ $active == 'hasil-seleksi' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-address-book"></i>
                         <p>
                             Hasil Seleksi
