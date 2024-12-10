@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminDataPendaftarController;
 use App\Http\Controllers\Admin\AdminVerifikasiPendaftarController;
+use App\Http\Controllers\Admin\HasilSeleksiController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
@@ -49,3 +50,4 @@ Route::post('user/upload-files', [UploadFilesController::class, 'store'])->name(
 Route::get('admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 Route::get('admin/data-pendaftar', [AdminDataPendaftarController::class, 'index'])->name('admin.dataPendaftar');
 Route::get('admin/verifikasi-pendaftar', [AdminVerifikasiPendaftarController::class, 'index'])->name('admin.verifikasiPendaftar');
+Route::get('admin/hasil-seleksi', [HasilSeleksiController::class, 'index'])->name('admin.hasilSeleksi');
