@@ -44,6 +44,9 @@
                                             Asal Sekolah
                                         </th>
                                         <th>
+                                            Status
+                                        </th>
+                                        <th>
                                             Actions
                                         </th>
                                     </tr>
@@ -65,6 +68,9 @@
                                             </td>
                                             <td>
                                                 {{ $pendaftar->asal_sekolah }}
+                                            </td>
+                                            <td>
+                                                {{ $pendaftar->is_accepted == 0 ? 'Pending' : 'Diterima' }}
                                             </td>
                                             <td>
                                                 <button class="btn btn-success">
