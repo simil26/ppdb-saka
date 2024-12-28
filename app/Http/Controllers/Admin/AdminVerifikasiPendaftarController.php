@@ -19,4 +19,15 @@ class AdminVerifikasiPendaftarController extends Controller
         ];
         return view('admin.admin-verifikasi-pendaftar', $data);
     }
+    public function verifikasi($noreg_ppdb)
+    {
+        try {
+            $biodata = Biodata::where('noreg_ppdb', $noreg_ppdb)->first();
+            $biodata->is_accepted = 1;
+            $biodata->save();
+            return redirect()->back()->with('success', 'Pendaftar berhasil diverifikasi');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
+    }
 }
