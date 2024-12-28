@@ -51,3 +51,4 @@ Route::get('admin/dashboard', [AdminDashboardController::class, 'index'])->name(
 Route::get('admin/data-pendaftar', [AdminDataPendaftarController::class, 'index'])->name('admin.dataPendaftar');
 Route::get('admin/verifikasi-pendaftar', [AdminVerifikasiPendaftarController::class, 'index'])->name('admin.verifikasiPendaftar');
 Route::get('admin/hasil-seleksi', [HasilSeleksiController::class, 'index'])->name('admin.hasilSeleksi');
+Route::get('admin/verifikasi-pendaftar/{noreg_ppdb}', [AdminVerifikasiPendaftarController::class, 'verifikasi'])->name('admin.verifikasiPendaftar.verifikasi');
