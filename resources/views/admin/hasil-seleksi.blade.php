@@ -61,6 +61,9 @@
                                         <th>
                                             Asal Sekolah
                                         </th>
+                                        <th>
+                                            Hasil Seleksi
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -80,6 +83,9 @@
                                             </td>
                                             <td>
                                                 {{ $pendaftar->asal_sekolah }}
+                                            </td>
+                                            <td>
+                                                {{ $pendaftar->is_accepted == 0 ? 'Pending' : 'Diterima' }}
                                             </td>
                                         </tr>
                                     @endforeach
