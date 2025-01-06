@@ -92,9 +92,9 @@
                                                 {{ $pendaftar->is_accepted == 0 ? 'Pending' : 'Diterima' }}
                                             </td>
                                             <td>
-                                                <button class="btn btn-success" id="verifikasi" data-toggle="modal" data-target="#verifikasi-modal">
+                                                <button class="btn btn-success" id="verifikasi" {{ $pendaftar->is_accepted == 1 ? 'disabled' : '' }} data-toggle="modal" data-target="#verifikasi-modal">
                                                     <i class="fas fa-user-check"></i>
-                                                    Verifikasi
+                                                    {{ $pendaftar->is_accepted == 1 ? 'Terverifikasi' : 'Verifikasi' }}
                                                 </button>
                                             </td>
                                         </tr>
