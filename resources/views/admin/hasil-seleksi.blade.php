@@ -27,15 +27,11 @@
                 <div class="row mt-3">
                     <div class="col-12">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-secondary">
-                                <i class="fas fa-print"></i>
-                                Print
-                            </button>
-                            <button type="button" class="btn btn-danger">
+                            <button type="button" id="export-pdf" class="btn btn-danger">
                                 <i class="fas fa-file-pdf"></i>
                                 PDF
                             </button>
-                            <button type="button" class="btn btn-success">
+                            <button type="button" id="export-excel" class="btn btn-success">
                                 <i class="fas fa-file-excel"></i>
                                 Excel
                             </button>
@@ -103,7 +99,30 @@
 @endsection
 
 @push('scripts')
+    <script src="{{ url('/assets/table2excel/jquery.table2excel.js') }}"></script>
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+    <script src="https://unpkg.com/jspdf-autotable@latest/dist/jspdf.plugin.autotable.js"></script>
     <script>
         $('#table-data-pendaftar').DataTable();
+        $("#export-excel").click(function() {
+            $("#table-data-pendaftar").table2excel({
+                exclude: ".excludeThisClass",
+                name: "Hasil Seleksi.xlsx",
+                filename: "Hasil Seleksi",
+                fileext: ".xlsx",
+            });
+        });
+
+        const {
+            jsPDF
+        } = window.jspdf;
+
+        document.getElementById('export-pdf').addEventListener('click', function() {
+            const doc = new jsPDF();
+            doc.autoTable({
+                html: '#table-data-pendaftar'
+            });
+            doc.save('hasil-seleksi.pdf');
+        })
     </script>
 @endpush
