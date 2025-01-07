@@ -15,8 +15,8 @@ class AdminDataPendaftarController extends Controller
             'title' => 'Data Pendaftar',
             'active' => 'data-pendaftar',
             'usingDatatables' => true,
-            'biodata' => $dataPendaftar
+            'dataPendaftar' => $dataPendaftar
         ];
-        return view('admin.admin-data-pendaftar', $data);
+        return view('admin.admin-verifikasi-pendaftar', $data);
     }
 }
