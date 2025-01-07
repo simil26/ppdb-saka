@@ -40,14 +40,14 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="{{ route('admin.verifikasiPendaftar') }}" class="nav-link {{ $active == 'verifikasi-pendaftar' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-user-check"></i>
                         <p>
                             Verifikasi Pendaftar
                         </p>
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a href="{{ route('admin.hasilSeleksi') }}" class="nav-link {{ $active == 'hasil-seleksi' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-address-book"></i>
