@@ -9,6 +9,9 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        if (!session()->has('email')) {
+            return redirect()->route('login');
+        }
         $data = [
             'title' => 'Dashboard',
             'active' => 'dashboard',

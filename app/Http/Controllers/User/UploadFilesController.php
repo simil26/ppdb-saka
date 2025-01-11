@@ -9,6 +9,9 @@ class UploadFilesController extends Controller
 {
     public function index()
     {
+        if (!session()->has('email')) {
+            return redirect()->route('login');
+        }
         $data = [
             'title' => 'Unggah Dokumen',
             'active' => 'upload-files',

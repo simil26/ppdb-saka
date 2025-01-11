@@ -10,16 +10,9 @@ class DataOrangTuaController extends Controller
 {
     public function index()
     {
-        // if (session()->has('noreg_ppdb')) {
-        //     $data = [
-        //         'title' => 'Data Orang Tua',
-        //         'active' => 'data-orang-tua',
-        //     ];
-
-        //     return view('user.data-orang-tua', $data);
-        // } else {
-        //     return redirect('user/data-diri')->with('warning', 'Silahkan isi data diri terlebih dahulu!');
-        // }
+        if (!session()->has('email')) {
+            return redirect()->route('login');
+        }
         $dataOrangTua = DataOrangTua::where('noreg_ppdb', session('noreg_ppdb'))->first();
         $data = [
             'title' => 'Data Orang Tua',

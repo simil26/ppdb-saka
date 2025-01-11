@@ -11,6 +11,9 @@ class DataPeriodikController extends Controller
 {
     public function index()
     {
+        if (!session()->has('email')) {
+            return redirect()->route('login');
+        }
         $dataPeriodik = DataPeriodik::where('noreg_ppdb', session('noreg_ppdb'))->first();
         $dataKesejahteraan = DataKesejahteraan::where('noreg_ppdb', session('noreg_ppdb'))->first();
         $data = [

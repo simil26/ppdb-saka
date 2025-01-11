@@ -11,6 +11,9 @@ class DataDiriController extends Controller
 {
     public function index()
     {
+        if (!session()->has('email')) {
+            return redirect()->route('login');
+        }
         $biodata = [];
         if (Session::has('noreg_ppdb')) {
             $biodata = Biodata::where('noreg_ppdb', Session::get('noreg_ppdb'))->first();
