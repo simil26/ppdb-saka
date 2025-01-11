@@ -10,6 +10,9 @@ class AdminDataPendaftarController extends Controller
 {
     public function index()
     {
+        if (!session()->has('username')) {
+            return redirect()->route('login');
+        }
         $dataPendaftar = Biodata::all();
         $data = [
             'title' => 'Data Pendaftar',

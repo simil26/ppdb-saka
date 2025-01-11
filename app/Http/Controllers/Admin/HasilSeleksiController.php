@@ -10,6 +10,9 @@ class HasilSeleksiController extends Controller
 {
     public function index()
     {
+        if (!session()->has('username')) {
+            return redirect()->route('login');
+        }
         $biodata = Biodata::all();
         $data = [
             'title' => 'Hasil Seleksi',
