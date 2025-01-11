@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Biodata;
+use App\Models\UserAdmin;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -28,6 +29,11 @@ class DatabaseSeeder extends Seeder
             'name' => 'Peserta Didik 1',
             'email' => 'siswa@siswa.com',
             'password' => Hash::make('password'),
+        ]);
+        UserAdmin::create([
+            'name' => 'Administrator',
+            'username' => 'admin',
+            'password' => Hash::make('admin1234'),
         ]);
     }
 }
