@@ -14,7 +14,7 @@
                 <img src="{{ url('assets/adminlte') }}/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Nama Pengguna</a>
+                <a href="#" class="d-block">{{ session('name') }}</a>
             </div>
         </div>
 
@@ -57,7 +57,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('logoutAttempt') }}" class="nav-link">
+                    <a href="{{ route('admin.logoutAttempt') }}" class="nav-link">
                         <i class="nav-icon fas fa-sign-out-alt"></i>
                         <p>
                             Logout
