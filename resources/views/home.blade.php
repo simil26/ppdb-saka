@@ -14,7 +14,7 @@
                 </h1>
                 <p class="lead">Ini adalah halaman utama website Penerimaan Peserta Didik Bari (PPDB) Sekolah Alam Karawang. Di halaman ini berisi informasi utama yang dibutuhkan untuk melakukan pendaftaran PPDB.</p>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                    <a href="javascript:void(0)" class="btn btn-primary btn-lg px-4 me-md-2">Daftar</a>
+                    <a href="{{ route('login') }}" class="btn btn-primary btn-lg px-4 me-md-2">Daftar</a>
                     <a href="#syarat" class="btn btn-outline-secondary btn-lg px-4"> Lihat Persyaratan</a>
                 </div>
             </div>
