@@ -43,8 +43,16 @@
                         Anda tidak diperkenankan mengakses halaman formulir data orang tua sebelum anda mengisi data diri.
                     </div>
                 @endif
-                @if (session()->has('noreg_ppdb'))
-                    <form action="{{ route('user.store.dataOrangTua') }}" method="POST">
+                @if ($dataOrangTua)
+                    <div class="row my-2">
+                        <div class="col-12">
+                            <button class="btn btn-success" type="button" onclick="enabledEdit()">
+                                <i class="fas fa-edit"></i>
+                                Edit
+                            </button>
+                        </div>
+                    </div>
+                    <form action="{{ route('user.update.dataOrangTua') }}" method="POST">
                         @csrf
                         <input type="hidden" name="noreg_ppdb" value="{{ session('noreg_ppdb') }}">
                         <div class="row">
@@ -378,5 +386,12 @@
             format: 'YYYY-MM-DD',
             allowInputToggle: true,
         });
+
+        function enabledEdit() {
+            $('input').removeAttr('disabled');
+            $('select').removeAttr('disabled');
+            $('textarea').removeAttr('disabled');
+            $('button[type="submit"]').removeAttr('disabled');
+        }
     </script>
 @endpush

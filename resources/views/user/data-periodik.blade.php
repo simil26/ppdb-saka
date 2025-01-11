@@ -43,8 +43,16 @@
                         Anda tidak diperkenankan mengakses halaman formulir data orang tua sebelum anda mengisi data diri.
                     </div>
                 @endif
-                @if (session()->has('noreg_ppdb'))
-                    <form action="{{ route('user.store.dataPeriodik') }}" method="POST">
+                @if ($dataPeriodik && $dataKesejahteraan)
+                    <div class="row my-2">
+                        <div class="col-12">
+                            <button class="btn btn-success" type="button" onclick="enabledEdit()">
+                                <i class="fas fa-edit"></i>
+                                Edit
+                            </button>
+                        </div>
+                    </div>
+                    <form action="{{ route('user.update.dataPeriodik') }}" method="POST">
                         @csrf
                         <input type="hidden" name="noreg_ppdb" value="{{ session('noreg_ppdb') }}">
                         <div class="row">
@@ -97,7 +105,7 @@
                                     <div class="col-lg-9">
                                         <div class="form-group">
                                             <label for="kip">Nomor KIP</label>
-                                            <input type="text" class="form-control" name="nomor_kip" id="kip" placeholder="Nomor KIP" disabled>
+                                            <input type="text" class="form-control" name="nomor_kip" id="kip" value="{{ $dataKesejahteraan['nomor_kip'] }}" placeholder="Nomor KIP" disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -116,7 +124,7 @@
                                     <div class="col-lg-9">
                                         <div class="form-group">
                                             <label for="kis">Nomor KIS</label>
-                                            <input type="text" class="form-control" name="nomor_kis" id="kis" placeholder="Nomor KIS" disabled>
+                                            <input type="text" class="form-control" name="nomor_kis" id="kis" value="{{ $dataKesejahteraan['nomor_kis'] }}" placeholder="Nomor KIS" disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -135,7 +143,7 @@
                                     <div class="col-lg-9">
                                         <div class="form-group">
                                             <label for="kks">Nomor KKS</label>
-                                            <input type="text" class="form-control" name="nomor_kks" id="kks" placeholder="Nomor KKS" disabled>
+                                            <input type="text" class="form-control" name="nomor_kks" id="kks" value="{{ $dataKesejahteraan['nomor_kks'] }}" placeholder="Nomor KKS" disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -154,7 +162,7 @@
                                     <div class="col-lg-9">
                                         <div class="form-group">
                                             <label for="kps">Nomor KPS</label>
-                                            <input type="text" class="form-control" name="nomor_kps" id="kps" placeholder="Nomor KPS" disabled>
+                                            <input type="text" class="form-control" name="nomor_kps" id="kps" value="{{ $dataKesejahteraan['nomor_kps'] }}" placeholder="Nomor KPS" disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -173,7 +181,7 @@
                                     <div class="col-lg-9">
                                         <div class="form-group">
                                             <label for="pkh">Nomor PKH</label>
-                                            <input type="text" class="form-control" name="nomor_pkh" id="pkh" placeholder="Nomor PKH" disabled>
+                                            <input type="text" class="form-control" name="nomor_pkh" id="pkh" value="{{ $dataKesejahteraan['nomor_pkh'] }}" placeholder="Nomor PKH" disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -356,5 +364,12 @@
                 $('#' + id.replace('is_', '')).prop('disabled', true);
             }
         });
+
+        function enabledEdit() {
+            $('input').removeAttr('disabled');
+            $('select').removeAttr('disabled');
+            $('textarea').removeAttr('disabled');
+            $('button[type="submit"]').removeAttr('disabled');
+        }
     </script>
 @endpush
