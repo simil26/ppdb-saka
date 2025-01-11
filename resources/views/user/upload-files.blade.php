@@ -26,7 +26,7 @@
             <div class="container-fluid px-4">
                 <form action="{{ route('user.store.uploadFiles') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="noreg_ppdb" value="PPDB-2425-123">
+                    <input type="hidden" name="noreg_ppdb" value="{{ session('noreg_ppdb') }}">
                     <div class="row">
                         <div class="col-12 col-lg-6">
                             <div class="form-group">
