@@ -10,7 +10,7 @@ class AdminDashboardController extends Controller
     public function index()
     {
         if (!session()->has('username')) {
-            return redirect()->route('login');
+            return redirect()->route('admin.login');
         }
         $data = [
             'title' => 'Dashboard',
