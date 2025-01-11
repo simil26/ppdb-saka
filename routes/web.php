@@ -48,8 +48,10 @@ Route::get('admin/logout', [LogoutAdminController::class, 'logout'])->name('admi
 
 Route::post('user/data-diri/simpan', [DataDiriController::class, 'store'])->name('user.dataDiri.store');
 Route::post('user/data-diri/update', [DataDiriController::class, 'update'])->name('user.dataDiri.update');
-Route::post('user/data-orang-tua', [DataOrangTuaController::class, 'store'])->name('user.store.dataOrangTua');
-Route::post('user/data-periodik', [DataPeriodikController::class, 'store'])->name('user.store.dataPeriodik');
+Route::post('user/data-orang-tua/simpan', [DataOrangTuaController::class, 'store'])->name('user.store.dataOrangTua');
+Route::post('user/data-orang-tua/update', [DataOrangTuaController::class, 'update'])->name('user.update.dataOrangTua');
+Route::post('user/data-periodik/simpan', [DataPeriodikController::class, 'store'])->name('user.store.dataPeriodik');
+Route::post('user/data-periodik/update', [DataPeriodikController::class, 'update'])->name('user.update.dataPeriodik');
 Route::post('user/upload-files', [UploadFilesController::class, 'store'])->name('user.store.uploadFiles');
 
 Route::get('admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
