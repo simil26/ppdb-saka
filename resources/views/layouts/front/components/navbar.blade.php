@@ -20,19 +20,10 @@
                         <a class="nav-link link-dark" href="{{ url('data-pendaftar') }}">Data Pendaftar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link-dark" href="#syarat">Persyaratan</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link link-dark" href="#kuota">Kuota</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link link-dark" href="#jalur">Jalur</a>
+                        <a class="nav-link link-dark" href="#syarat">Syarat dan Kuota</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link link-dark" href="#fasilitas">Fasilitas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link link-dark" href="#faq">FAQ</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link link-dark" href="{{ url('contact-us') }}">Kontak Kami</a>
