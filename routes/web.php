@@ -4,6 +4,8 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminDataPendaftarController;
 use App\Http\Controllers\Admin\AdminVerifikasiPendaftarController;
 use App\Http\Controllers\Admin\HasilSeleksiController;
+use App\Http\Controllers\Admin\LoginAdminController;
+use App\Http\Controllers\Admin\LogoutAdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
@@ -30,6 +32,7 @@ use App\Http\Controllers\Front\DataPendaftarController;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/data-pendaftar', [DataPendaftarController::class, 'index']);
 Route::get('login', [LoginController::class, 'index'])->name('login');
+Route::get('admin/login', [LoginAdminController::class, 'index'])->name('admin.login');
 Route::get('user/dashboard', [DashboardController::class, 'index'])->name('user.dashboard');
 Route::get('user/data-diri', [DataDiriController::class, 'index'])->name('user.dataDiri');
 Route::get('user/data-orang-tua', [DataOrangTuaController::class, 'index'])->name('user.dataOrangTua');
@@ -39,7 +42,9 @@ Route::get('user/upload-files', [UploadFilesController::class, 'index'])->name('
 Route::get('register', [RegisterController::class, 'index'])->name('register');
 Route::post('register', [RegisterController::class, 'register'])->name('register.store');
 Route::post('login', [LoginController::class, 'login'])->name('loginAttempt');
+Route::post('admin/login', [LoginAdminController::class, 'loginAdmin'])->name('admin.loginAttempt');
 Route::get('logout', [LogoutController::class, 'logout'])->name('logoutAttempt');
+Route::get('admin/logout', [LogoutAdminController::class, 'logout'])->name('admin.logoutAttempt');
 
 Route::post('user/data-diri/simpan', [DataDiriController::class, 'store'])->name('user.dataDiri.store');
 Route::post('user/data-diri/update', [DataDiriController::class, 'update'])->name('user.dataDiri.update');
