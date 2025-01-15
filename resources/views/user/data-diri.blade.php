@@ -231,9 +231,9 @@
                                     <label for="tahun-lulus">Tahun Lulus</label>
                                     <select class="form-control" name="tahun_lulus" id="tahun-lulus">
                                         <option>Pilih :</option>
+                                        <option value="2025">2025</option>
                                         <option value="2024">2024</option>
                                         <option value="2023">2023</option>
-                                        <option value="2022">2022</option>
                                         <option value="99">Lainnya</option>
                                     </select>
                                 </div>
