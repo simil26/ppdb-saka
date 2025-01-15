@@ -27,16 +27,28 @@
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <div class="col-12">
-                        <div class="callout callout-info">
-                            <h3>
-                                Selamat datang! <br>
-                                di Laman Pendaftaran PPDB SD Alam Amani Karawang.
-                            </h3>
+                        @if ($biodata && $dataOrangTua && $dataPeriodik && $dataKesejahteraan && $uploadFiles)
+                            <div class="callout callout-success bg-success">
+                                <h3>
+                                    Selamat! <br>
+                                    Anda sudah menyelesaikan proses pendaftaran Penerimaan Peserta Didik Baru.
+                                </h3>
+                                <p>
+                                    Untuk hasil seleksi dan informasi lebih lanjut, silahkan tunggu informasi pengumuman pada tanggal yang sudah ditentukan.
+                                </p>
+                            </div>
+                        @else
+                            <div class="callout callout-info">
+                                <h3>
+                                    Selamat datang! <br>
+                                    di Laman Pendaftaran PPDB SD Alam Amani Karawang.
+                                </h3>
 
-                            <p>
-                                Ini adalah halaman dashboard. Anda dapat melihat proses pendaftaran anda disini.
-                            </p>
-                        </div>
+                                <p>
+                                    Ini adalah halaman dashboard. Anda dapat melihat proses pendaftaran anda disini.
+                                </p>
+                            </div>
+                        @endif
                     </div>
                     <!-- ./col -->
                 </div>
