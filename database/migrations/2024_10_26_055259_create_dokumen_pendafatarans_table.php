@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('dokumen_pendafatarans', function (Blueprint $table) {
             $table->id();
             $table->string('noreg_ppdb')->unique();
+            $table->integer('user_id')->unique();
             $table->string('ijazah')->default('-');
             $table->string('kk')->default('-');
             $table->string('akte')->default('-');

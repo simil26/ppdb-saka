@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('data_periodiks', function (Blueprint $table) {
             $table->id();
             $table->string('noreg_ppdb')->unique();
+            $table->integer('user_id')->unique();
             $table->string('hobi');
             $table->string('cita_cita');
             $table->integer('tinggi_badan');
