@@ -16,10 +16,14 @@ class DataOrangTuaController extends Controller
         }
         if (Session::has('noreg_ppdb')) {
             $dataOrangTua = DataOrangTua::where('noreg_ppdb', Session::get('noreg_ppdb'))->first();
-            session()->put('noreg_ppdb', $dataOrangTua->noreg_ppdb);
+            if ($dataOrangTua) {
+                session()->put('noreg_ppdb', $dataOrangTua->noreg_ppdb);
+            }
         } else if (auth()->user()->id) {
             $dataOrangTua = DataOrangTua::where('user_id', auth()->user()->id)->first();
-            session()->put('noreg_ppdb', $dataOrangTua->noreg_ppdb);
+            if ($dataOrangTua) {
+                session()->put('noreg_ppdb', $dataOrangTua->noreg_ppdb);
+            }
         }
         $data = [
             'title' => 'Data Orang Tua',

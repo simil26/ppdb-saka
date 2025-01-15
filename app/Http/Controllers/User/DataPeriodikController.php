@@ -19,9 +19,15 @@ class DataPeriodikController extends Controller
         if (Session::has('noreg_ppdb')) {
             $dataPeriodik = DataPeriodik::where('noreg_ppdb', session('noreg_ppdb'))->first();
             $dataKesejahteraan = DataKesejahteraan::where('noreg_ppdb', session('noreg_ppdb'))->first();
+            if ($dataPeriodik) {
+                session()->put('noreg_ppdb', $dataPeriodik->noreg_ppdb);
+            }
         } else if (auth()->user()->id) {
             $dataPeriodik = DataPeriodik::where('user_id', auth()->user()->id)->first();
             $dataKesejahteraan = DataKesejahteraan::where('user_id', auth()->user()->id)->first();
+            if ($dataPeriodik) {
+                session()->put('noreg_ppdb', $dataPeriodik->noreg_ppdb);
+            }
         }
 
         $data = [
