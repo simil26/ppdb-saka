@@ -23,6 +23,7 @@ class UploadFilesController extends Controller
 
     public function store(Request $request)
     {
+        $userID = $request->user()->get('id');
         $noregPPDB = $request->input('noreg_ppdb');
         $files = [
             'ijazah' => $request->file('ijazah') ? $request->file('ijazah') : '-',

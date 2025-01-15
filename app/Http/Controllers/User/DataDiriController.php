@@ -17,6 +17,10 @@ class DataDiriController extends Controller
         $biodata = [];
         if (Session::has('noreg_ppdb')) {
             $biodata = Biodata::where('noreg_ppdb', Session::get('noreg_ppdb'))->first();
+            session()->put('noreg_ppdb', $biodata->noreg_ppdb);
+        } else if (auth()->user()->id) {
+            $biodata = Biodata::where('user_id', auth()->user()->id)->first();
+            session()->put('noreg_ppdb', $biodata->noreg_ppdb);
         }
         $data = [
             'title' => 'Data Diri',
@@ -29,6 +33,7 @@ class DataDiriController extends Controller
 
     public function store(Request $request)
     {
+        $userID = $request->user()->get('id');
 
         $rules = [
             'gelombang' => 'required',
@@ -97,6 +102,7 @@ class DataDiriController extends Controller
 
         $biodata = $request->validate($rules, $errorMessages);
         $biodata['noreg_ppdb'] = '';
+        $biodata['user_id'] = $userID[0]->id;
         if ($request->input('noreg_ppdb')) {
             $noreg_ppdb = $request->input('noreg_ppdb');
             $biodata['noreg_ppdb'] = $noreg_ppdb;

@@ -4,8 +4,9 @@ namespace App\Http\Controllers\User;
 
 use App\Models\DataPeriodik;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\DataKesejahteraan;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class DataPeriodikController extends Controller
 {
@@ -14,8 +15,15 @@ class DataPeriodikController extends Controller
         if (!session()->has('email')) {
             return redirect()->route('login');
         }
-        $dataPeriodik = DataPeriodik::where('noreg_ppdb', session('noreg_ppdb'))->first();
-        $dataKesejahteraan = DataKesejahteraan::where('noreg_ppdb', session('noreg_ppdb'))->first();
+
+        if (Session::has('noreg_ppdb')) {
+            $dataPeriodik = DataPeriodik::where('noreg_ppdb', session('noreg_ppdb'))->first();
+            $dataKesejahteraan = DataKesejahteraan::where('noreg_ppdb', session('noreg_ppdb'))->first();
+        } else if (auth()->user()->id) {
+            $dataPeriodik = DataPeriodik::where('user_id', auth()->user()->id)->first();
+            $dataKesejahteraan = DataKesejahteraan::where('user_id', auth()->user()->id)->first();
+        }
+
         $data = [
             'title' => 'Data Periodik',
             'active' => 'data-periodik',
@@ -28,6 +36,7 @@ class DataPeriodikController extends Controller
 
     public function store(Request $request)
     {
+        $userID = $request->user()->get('id');
         $dataKesejahteraan = [];
         $rules = [
             'noreg_ppdb' => 'required',
@@ -68,6 +77,8 @@ class DataPeriodikController extends Controller
 
         // dd($dataKesejahteraan);
         try {
+            $credentials['user_id'] = $userID[0]->id;
+            $dataKesejahteraan['user_id'] = $userID[0]->id;
             $resutlPeriodik = DataPeriodik::create($credentials);
             $resultKesejahteraan = DataKesejahteraan::create($dataKesejahteraan);
             return redirect()->back()->with('success', 'Data periodik berhasil disimpan');

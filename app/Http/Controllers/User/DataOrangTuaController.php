@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
 use App\Models\DataOrangTua;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class DataOrangTuaController extends Controller
 {
@@ -13,7 +14,13 @@ class DataOrangTuaController extends Controller
         if (!session()->has('email')) {
             return redirect()->route('login');
         }
-        $dataOrangTua = DataOrangTua::where('noreg_ppdb', session('noreg_ppdb'))->first();
+        if (Session::has('noreg_ppdb')) {
+            $dataOrangTua = DataOrangTua::where('noreg_ppdb', Session::get('noreg_ppdb'))->first();
+            session()->put('noreg_ppdb', $dataOrangTua->noreg_ppdb);
+        } else if (auth()->user()->id) {
+            $dataOrangTua = DataOrangTua::where('user_id', auth()->user()->id)->first();
+            session()->put('noreg_ppdb', $dataOrangTua->noreg_ppdb);
+        }
         $data = [
             'title' => 'Data Orang Tua',
             'active' => 'data-orang-tua',
@@ -24,6 +31,7 @@ class DataOrangTuaController extends Controller
 
     public function store(Request $request)
     {
+        $userID = $request->user()->get('id');
         $rules = [
             'noreg_ppdb' => 'required',
             'nama_ayah' => 'required|min:3|max:191',
@@ -73,6 +81,7 @@ class DataOrangTuaController extends Controller
         ];
 
         $data = $request->validate($rules, $errorMessages);
+        $data['user_id'] = $userID[0]->id;
         try {
             $result = DataOrangTua::create($data);
             return redirect('user/data-orang-tua')->with('success', 'Data Orang Tua berhasil disimpan!');
