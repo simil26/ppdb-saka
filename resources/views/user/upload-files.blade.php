@@ -24,6 +24,26 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid px-4">
+                @if (session()->has('success'))
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h5><i class="icon fas fa-check"></i> Dokumen berhasil disimpan!</h5>
+                        Dokumen yang anda unggah berhasil disimpan. Silahkan kembali ke halaman Dashboard untuk cetak bukti pendaftaran.
+                    </div>
+                @elseif (session()->has('error'))
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h5><i class="icon fas fa-ban"></i> Dokumen gagal disimpan!</h5>
+                        {{ session('error') }}
+                    </div>
+                @elseif (session()->has('warning'))
+                    <div class="alert alert-warning alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h5><i class="icon fas fa-exclamation"></i> Silahkan isi data diri terlebih dahulu!</h5>
+                        Anda tidak diperkenankan mengakses halaman formulir data orang tua sebelum anda mengisi data diri.
+                    </div>
+                @endif
+
                 <form action="{{ route('user.store.uploadFiles') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="noreg_ppdb" value="{{ session('noreg_ppdb') }}">
