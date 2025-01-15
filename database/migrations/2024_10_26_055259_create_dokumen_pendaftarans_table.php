@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('dokumen_pendafatarans', function (Blueprint $table) {
+        Schema::create('dokumen_pendaftarans', function (Blueprint $table) {
             $table->id();
             $table->string('noreg_ppdb')->unique();
             $table->integer('user_id')->unique();
