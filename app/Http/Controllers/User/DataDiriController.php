@@ -37,7 +37,7 @@ class DataDiriController extends Controller
 
     public function store(Request $request)
     {
-        $userID = $request->user()->get('id');
+        $userID = auth()->user()->id;
 
         $rules = [
             'gelombang' => 'required',
@@ -106,7 +106,7 @@ class DataDiriController extends Controller
 
         $biodata = $request->validate($rules, $errorMessages);
         $biodata['noreg_ppdb'] = '';
-        $biodata['user_id'] = $userID[0]->id;
+        $biodata['user_id'] = $userID;
         if ($request->input('noreg_ppdb')) {
             $noreg_ppdb = $request->input('noreg_ppdb');
             $biodata['noreg_ppdb'] = $noreg_ppdb;

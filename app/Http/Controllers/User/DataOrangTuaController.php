@@ -35,7 +35,7 @@ class DataOrangTuaController extends Controller
 
     public function store(Request $request)
     {
-        $userID = $request->user()->get('id');
+        $userID = auth()->user()->id;
         $rules = [
             'noreg_ppdb' => 'required',
             'nama_ayah' => 'required|min:3|max:191',
@@ -85,7 +85,7 @@ class DataOrangTuaController extends Controller
         ];
 
         $data = $request->validate($rules, $errorMessages);
-        $data['user_id'] = $userID[0]->id;
+        $data['user_id'] = $userID;
         try {
             $result = DataOrangTua::create($data);
             return redirect('user/data-orang-tua')->with('success', 'Data Orang Tua berhasil disimpan!');

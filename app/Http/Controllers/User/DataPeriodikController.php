@@ -42,7 +42,7 @@ class DataPeriodikController extends Controller
 
     public function store(Request $request)
     {
-        $userID = $request->user()->get('id');
+        $userID = auth()->user()->id;
         $dataKesejahteraan = [];
         $rules = [
             'noreg_ppdb' => 'required',
@@ -83,8 +83,8 @@ class DataPeriodikController extends Controller
 
         // dd($dataKesejahteraan);
         try {
-            $credentials['user_id'] = $userID[0]->id;
-            $dataKesejahteraan['user_id'] = $userID[0]->id;
+            $credentials['user_id'] = $userID;
+            $dataKesejahteraan['user_id'] = $userID;
             $resutlPeriodik = DataPeriodik::create($credentials);
             $resultKesejahteraan = DataKesejahteraan::create($dataKesejahteraan);
             return redirect()->back()->with('success', 'Data periodik berhasil disimpan');
