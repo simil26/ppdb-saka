@@ -18,7 +18,7 @@ class BiodataFactory extends Factory
     {
         return [
             'noreg_ppdb' => 'PPDB-2425-' . $this->faker->unique()->randomNumber(5),
-            'user_id' => $this->faker->unique()->numberBetween(2, 105),
+            'user_id' => $this->faker->unique()->numberBetween(5, 105),
             'gelombang' => $this->faker->randomElement(['1', '2', '3']),
             'nisn' => $this->faker->unique()->numberBetween(30170000001, 30199999999),
             'nik' => $this->faker->unique()->numberBetween(3215000000000001, 3215999999999999),
