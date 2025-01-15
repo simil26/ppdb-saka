@@ -49,30 +49,43 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">
-                                    <i class="fas fa-chart-pie mr-1"></i>
-                                    Sales
+                                    <i class="fas fa-clipboard-check mr-1"></i>
+                                    Status Pendaftaran
                                 </h3>
-                                <div class="card-tools">
-                                    <ul class="nav nav-pills ml-auto">
-                                        <li class="nav-item">
-                                            <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
-                                        </li>
-                                    </ul>
-                                </div>
                             </div><!-- /.card-header -->
                             <div class="card-body">
-                                <div class="tab-content p-0">
-                                    <!-- Morris chart - Sales -->
-                                    <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;">
-                                        <canvas id="revenue-chart-canvas" height="300" style="height: 300px;"></canvas>
-                                    </div>
-                                    <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
-                                        <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
-                                    </div>
-                                </div>
+                                <ul class="status-pendaftaran list-unstyled px-3">
+                                    <li class="status-item">
+                                        <input type="checkbox" class="form-check-input" id="biodata" {{ $biodata ? 'checked' : '' }}>
+                                        <h5>
+                                            {!! $biodata ? '<del>Data Diri</del>' : 'Data Diri' !!}
+                                        </h5>
+                                    </li>
+                                    <li class="status-item">
+                                        <input type="checkbox" class="form-check-input" id="dataOrangTua" {{ $dataOrangTua ? 'checked' : '' }}>
+                                        <h5>
+                                            {!! $dataOrangTua ? '<del>Data Orang Tua</del>' : 'Data Orang Tua' !!}
+                                        </h5>
+                                    </li>
+                                    <li class="status-item">
+                                        <input type="checkbox" class="form-check-input" id="dataPeriodik" {{ $dataPeriodik ? 'checked' : '' }}>
+                                        <h5>
+                                            {!! $dataPeriodik ? '<del>Data Periodik</del>' : 'Data Periodik' !!}
+                                        </h5>
+                                    </li>
+                                    <li class="status-item">
+                                        <input type="checkbox" class="form-check-input" id="dataKesejahteraan" {{ $dataKesejahteraan ? 'checked' : '' }}>
+                                        <h5>
+                                            {!! $dataKesejahteraan ? '<del>Data Kesejahteraan</del>' : 'Data Kesejahteraan' !!}
+                                        </h5>
+                                    </li>
+                                    <li class="status-item">
+                                        <input type="checkbox" class="form-check-input" id="uploadFiles" {{ $uploadFiles ? 'checked' : '' }}>
+                                        <h5>
+                                            {!! $uploadFiles ? '<del>Dokumen Pendaftaran</del>' : 'Dokumen Pendaftaran' !!}
+                                        </h5>
+                                    </li>
+                                </ul>
                             </div><!-- /.card-body -->
                         </div>
                         <!-- /.card -->
@@ -83,7 +96,7 @@
                     <section class="col-lg-5 connectedSortable">
 
                         <!-- Calendar -->
-                        <div class="card bg-gradient-success">
+                        <div class="card bg-gradient-white">
                             <div class="card-header border-0">
 
                                 <h3 class="card-title">
@@ -94,7 +107,7 @@
                                 <div class="card-tools">
                                     <!-- button with a dropdown -->
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52">
+                                        <button type="button" class="btn btn-white btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52">
                                             <i class="fas fa-bars"></i>
                                         </button>
                                         <div class="dropdown-menu" role="menu">
@@ -104,10 +117,10 @@
                                             <a href="#" class="dropdown-item">View calendar</a>
                                         </div>
                                     </div>
-                                    <button type="button" class="btn btn-success btn-sm" data-card-widget="collapse">
+                                    <button type="button" class="btn btn-white btn-sm" data-card-widget="collapse">
                                         <i class="fas fa-minus"></i>
                                     </button>
-                                    <button type="button" class="btn btn-success btn-sm" data-card-widget="remove">
+                                    <button type="button" class="btn btn-white btn-sm" data-card-widget="remove">
                                         <i class="fas fa-times"></i>
                                     </button>
                                 </div>
