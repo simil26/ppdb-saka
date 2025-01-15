@@ -6,9 +6,9 @@ use App\Models\Biodata;
 use App\Models\DataOrangTua;
 use App\Models\DataPeriodik;
 use App\Models\DataKesejahteraan;
-use App\Models\DokumenPendafataran;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\DokumenPendaftaran;
 
 class DashboardController extends Controller
 {
@@ -21,7 +21,7 @@ class DashboardController extends Controller
         $dataOrangTua = DataOrangTua::where('user_id', auth()->user()->id)->first();
         $dataPeriodik = DataPeriodik::where('user_id', auth()->user()->id)->first();
         $dataKesejahteraan = DataKesejahteraan::where('user_id', auth()->user()->id)->first();
-        $uploadFiles = DokumenPendafataran::where('user_id', auth()->user()->id)->first();
+        $uploadFiles = DokumenPendaftaran::where('user_id', auth()->user()->id)->first();
         $data = [
             'title' => 'Dashboard',
             'active' => 'dashboard',
