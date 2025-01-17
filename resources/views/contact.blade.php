@@ -31,6 +31,9 @@
                             <label for="pesan">Pesan</label>
                             <textarea class="form-control" id="pesan" name="pesan" rows="3" style="height: 180px" required></textarea>
                         </div>
+                        <div class="form-group my-3">
+                            <button type="button" class="btn btn-primary">Kirim</button>
+                        </div>
                     </form>
                 </div>
                 <div class="col-6 d-flex align-items-center">
