@@ -11,6 +11,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\User\DataDiriController;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\UploadFilesController;
@@ -31,6 +32,7 @@ use App\Http\Controllers\Front\DataPendaftarController;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/data-pendaftar', [DataPendaftarController::class, 'index']);
+Route::get('contact-us', [ContactController::class, 'index'])->name('contact');
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::get('admin/login', [LoginAdminController::class, 'index'])->name('admin.login');
 Route::get('user/dashboard', [DashboardController::class, 'index'])->name('user.dashboard');
