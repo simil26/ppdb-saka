@@ -64,9 +64,23 @@ class UploadFilesController extends Controller
         $uploadAttempt = DokumenPendaftaran::create($dokumenPPDB);
 
         if ($uploadAttempt) {
-            return redirect()->route('user.uploadFiles')->with('success', 'Dokumen berhasil diunggah');
+            session()->put('uploadFiles', 'success');
+            return redirect()->route('user.uploadFiles.selesai')->with('success', 'Dokumen berhasil diunggah');
         } else {
             return redirect()->route('user.uploadFiles')->with('error', 'Dokumen gagal diunggah');
         }
+    }
+
+    public function showDokumen()
+    {
+        $userID = auth()->user()->id;
+        $dokumenPPDB = DokumenPendaftaran::where('user_id', $userID)->first();
+        $data = [
+            'title' => 'Dokumen Pendaftaran',
+            'active' => 'dokumen-pendaftaran',
+            'dokumenPPDB' => $dokumenPPDB
+        ];
+
+        return view('user.dokumen-pendaftaran', $data);
     }
 }
