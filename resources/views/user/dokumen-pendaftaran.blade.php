@@ -99,7 +99,7 @@
                             </div>
                         </div>
                     @endif
-                    @if ($dokumenPPDB->kip != '-')
+                    @if ($dokumenPPDB->kis != '-')
                         <div class="col-3">
                             <div class="card">
                                 <div class="card-title pt-3 py-2">
@@ -111,7 +111,7 @@
                             </div>
                         </div>
                     @endif
-                    @if ($dokumenPPDB->kip != '-')
+                    @if ($dokumenPPDB->kks != '-')
                         <div class="col-3">
                             <div class="card">
                                 <div class="card-title pt-3 py-2">
@@ -123,7 +123,7 @@
                             </div>
                         </div>
                     @endif
-                    @if ($dokumenPPDB->kip != '-')
+                    @if ($dokumenPPDB->kks != '-')
                         <div class="col-3">
                             <div class="card">
                                 <div class="card-title pt-3 py-2">
@@ -137,7 +137,7 @@
                     @endif
                 </div>
                 <div class="row d-flex justify-content-center">
-                    @if ($dokumenPPDB->kip != '-')
+                    @if ($dokumenPPDB->pkh != '-')
                         <div class="col-3">
                             <div class="card">
                                 <div class="card-title pt-3 py-2">
