@@ -57,12 +57,21 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('user.uploadFiles') }}" class="nav-link {{ $active == 'upload-files' ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-file-alt"></i>
-                        <p>
-                            Unggah Dokumen
-                        </p>
-                    </a>
+                    @if (session('uploadFiles'))
+                        <a href="{{ route('user.uploadFiles.selesai') }}" class="nav-link {{ $active == 'dokumen-pendaftaran' ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-file-alt"></i>
+                            <p>
+                                Unggah Dokumen
+                            </p>
+                        </a>
+                    @else
+                        <a href="{{ route('user.uploadFiles') }}" class="nav-link {{ $active == 'upload-files' ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-file-alt"></i>
+                            <p>
+                                Unggah Dokumen
+                            </p>
+                        </a>
+                    @endif
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('logoutAttempt') }}" class="nav-link">
