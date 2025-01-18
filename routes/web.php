@@ -29,6 +29,28 @@ use App\Http\Controllers\Front\DataPendaftarController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+/*
+Route/Rute, adalah tempat dimana kita menentukan URL apa yang akan diakses oleh user, dan apa yang akan dilakukan ketika URL tersebut diakses.
+
+Metode = Cara url diakses
+         1. GET untuk mengakses halaman saja karena tidak aman jika merubah data menggunakan metode GET. Data akan muncul di address bar dan bisa di curi
+         2. POST untuk mengirimkan data ke server. Data tidak akan muncul di address bar, jadi lebih aman
+
+URL = Alamat yang akan diakses oleh pengguna yg muncul di address bar. Contoh: localhost/url
+      1. "localhost" adalah nama domain seperti google.com, facebook.com, dll
+      2. "/" adalah pemisah antara domain dan url
+      3. "url" adalah alamat yang akan diakses oleh pengguna
+
+Controller = Controller disini adalah controller yg akan panggil ketika URL diakses.
+
+Fungsi = Setelah controller dipanggil, maka akan memanggil fungsi yang ada di controller tersebut. Isi dari fungsi yg akan diekseskusi oleh browser, bisa juga menampilkan halaman atau mengirim data ke database. Eksekusi fungsi ini tergantung dari metode akses dari URL, kalo GET berarti menampilkan halaman, kalo POST berarti mengirim data ke database.
+
+        |        |                   |                 |
+        |        |                   |                 |
+        |        |                   |                 |
+        v        v                   v                 v
+      Metode    URL              Controller         Fungsi
+*/
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/data-pendaftar', [DataPendaftarController::class, 'index']);
