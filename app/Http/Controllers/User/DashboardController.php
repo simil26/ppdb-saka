@@ -35,6 +35,9 @@ class DashboardController extends Controller
         if ($biodata) {
             session()->put('noreg_ppdb', $biodata->noreg_ppdb);
         }
+        if ($uploadFiles) {
+            session()->put('uploadFiles', 'selesai');
+        }
 
         return view('user.dashboard', $data);
     }
