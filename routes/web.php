@@ -35,18 +35,20 @@ Route::get('/data-pendaftar', [DataPendaftarController::class, 'index']);
 Route::get('contact-us', [ContactController::class, 'index'])->name('contact');
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::get('admin/login', [LoginAdminController::class, 'index'])->name('admin.login');
+Route::get('logout', [LogoutController::class, 'logout'])->name('logoutAttempt');
+Route::get('admin/logout', [LogoutAdminController::class, 'logout'])->name('admin.logoutAttempt');
+Route::get('register', [RegisterController::class, 'index'])->name('register');
+
+Route::post('register', [RegisterController::class, 'register'])->name('register.store');
+Route::post('login', [LoginController::class, 'login'])->name('loginAttempt');
+Route::post('admin/login', [LoginAdminController::class, 'loginAdmin'])->name('admin.loginAttempt');
+
 Route::get('user/dashboard', [DashboardController::class, 'index'])->name('user.dashboard');
 Route::get('user/data-diri', [DataDiriController::class, 'index'])->name('user.dataDiri');
 Route::get('user/data-orang-tua', [DataOrangTuaController::class, 'index'])->name('user.dataOrangTua');
 Route::get('user/data-periodik', [DataPeriodikController::class, 'index'])->name('user.dataPeriodik');
 Route::get('user/upload-files', [UploadFilesController::class, 'index'])->name('user.uploadFiles');
-
-Route::get('register', [RegisterController::class, 'index'])->name('register');
-Route::post('register', [RegisterController::class, 'register'])->name('register.store');
-Route::post('login', [LoginController::class, 'login'])->name('loginAttempt');
-Route::post('admin/login', [LoginAdminController::class, 'loginAdmin'])->name('admin.loginAttempt');
-Route::get('logout', [LogoutController::class, 'logout'])->name('logoutAttempt');
-Route::get('admin/logout', [LogoutAdminController::class, 'logout'])->name('admin.logoutAttempt');
+Route::get('user/upload-file/selesai', [UploadFilesController::class, 'showDokumen'])->name('user.uploadFiles.selesai');
 
 Route::post('user/data-diri/simpan', [DataDiriController::class, 'store'])->name('user.dataDiri.store');
 Route::post('user/data-diri/update', [DataDiriController::class, 'update'])->name('user.dataDiri.update');
