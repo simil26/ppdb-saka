@@ -66,38 +66,60 @@
                                 </h3>
                             </div><!-- /.card-header -->
                             <div class="card-body">
-                                <ul class="status-pendaftaran list-unstyled px-3">
-                                    <li class="status-item">
-                                        <input type="checkbox" class="form-check-input" id="biodata" {{ $biodata ? 'checked' : '' }}>
-                                        <h5>
-                                            {!! $biodata ? '<del>Data Diri</del>' : 'Data Diri' !!}
-                                        </h5>
-                                    </li>
-                                    <li class="status-item">
-                                        <input type="checkbox" class="form-check-input" id="dataOrangTua" {{ $dataOrangTua ? 'checked' : '' }}>
-                                        <h5>
-                                            {!! $dataOrangTua ? '<del>Data Orang Tua</del>' : 'Data Orang Tua' !!}
-                                        </h5>
-                                    </li>
-                                    <li class="status-item">
-                                        <input type="checkbox" class="form-check-input" id="dataPeriodik" {{ $dataPeriodik ? 'checked' : '' }}>
-                                        <h5>
-                                            {!! $dataPeriodik ? '<del>Data Periodik</del>' : 'Data Periodik' !!}
-                                        </h5>
-                                    </li>
-                                    <li class="status-item">
-                                        <input type="checkbox" class="form-check-input" id="dataKesejahteraan" {{ $dataKesejahteraan ? 'checked' : '' }}>
-                                        <h5>
-                                            {!! $dataKesejahteraan ? '<del>Data Kesejahteraan</del>' : 'Data Kesejahteraan' !!}
-                                        </h5>
-                                    </li>
-                                    <li class="status-item">
-                                        <input type="checkbox" class="form-check-input" id="uploadFiles" {{ $uploadFiles ? 'checked' : '' }}>
-                                        <h5>
-                                            {!! $uploadFiles ? '<del>Dokumen Pendaftaran</del>' : 'Dokumen Pendaftaran' !!}
-                                        </h5>
-                                    </li>
-                                </ul>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="timeline">
+                                            <!-- timeline item -->
+                                            <div>
+                                                <i class="fas fa-check bg-green"></i>
+                                                <div class="timeline-item">
+                                                    <h3 class="timeline-header text-blue font-weight-bold">Data Diri</h3>
+
+                                                    <div class="timeline-body">
+                                                        Data diri sudah terisi dengan lengkap. Silahkan lanjut mengisi data orang tua.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- END timeline item --><!-- timeline item -->
+                                            <div>
+                                                <i class="fas fa-exclamation bg-yellow"></i>
+                                                <div class="timeline-item">
+                                                    <h3 class="timeline-header text-blue font-weight-bold">Data Orang Tua</h3>
+
+                                                    <div class="timeline-body">
+                                                        Anda belum mengisi data orang tua. Silahkan isi data orang tua terlebih dahulu.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- END timeline item --><!-- timeline item -->
+                                            <div>
+                                                <i class="fas fa-clock bg-gray"></i>
+                                                <div class="timeline-item">
+                                                    <h3 class="timeline-header text-blue font-weight-bold">Data Periodik</h3>
+
+                                                    <div class="timeline-body">
+                                                        Silahkan mengisi data orang tua terlebih dahulu, agar dapat mengisi data periodik.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- END timeline item --><!-- timeline item -->
+                                            <div>
+                                                <i class="fas fa-clock bg-gray"></i>
+                                                <div class="timeline-item">
+                                                    <h3 class="timeline-header text-blue font-weight-bold">Unggah Dokumen</h3>
+
+                                                    <div class="timeline-body">
+                                                        Silahkan mengisi data periodik terlebih dahulu, agar dapat mengunggah dokumen.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- END timeline item -->
+                                            <div>
+                                                <i class="fas fa-exclamation bg-gray"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div><!-- /.card-body -->
                         </div>
                         <!-- /.card -->
