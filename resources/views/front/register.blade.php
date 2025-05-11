@@ -20,7 +20,7 @@
                 <form action{{ route('register.store') }}" method="post">
                     @csrf
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="name" placeholder="Full name" value="{{ old('name') }}">
+                        <input type="text" class="form-control" name="name" placeholder="Nama Lengkap Calon Siswa" value="{{ old('name') }}">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
@@ -36,7 +36,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" name="password" placeholder="Password">
+                        <input type="password" class="form-control" name="password" placeholder="Kata sandi">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -44,7 +44,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" name="confirm_password" placeholder="Retype password">
+                        <input type="password" class="form-control" name="confirm_password" placeholder="Konfirmasi kata sandi">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -52,16 +52,18 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-8">
+                        <div class="col-12 mb-4">
                             <div class="icheck-primary">
                                 <input type="checkbox" id="agreeTerms" name="terms" name="terms" value="1">
                                 <label for="agreeTerms">
-                                    I agree to the <a href="#">terms</a>
+                                    Saya setuju dengan segala <a href="#">syarat dan ketentuan</a>
                                 </label>
                             </div>
                         </div>
                         <!-- /.col -->
-                        <div class="col-4">
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
                             <button type="submit" class="btn btn-primary btn-block">
                                 Daftar
                             </button>
@@ -71,9 +73,13 @@
                 </form>
 
                 <div class="social-auth-links text-center">
+                    <hr>
+                    <p>
+                        Anda sudah memiliki akun? Silahkan masuk dengan klik tombol di bawah ini.
+                    </p>
                     <a href="{{ route('login') }}" class="btn btn-block btn-primary">
                         <i class="fas fa-sign-in-alt"></i>
-                        Sign in here!
+                        Login!
                     </a>
                 </div>
 
