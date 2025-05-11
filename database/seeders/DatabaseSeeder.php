@@ -24,12 +24,12 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        Biodata::factory(100)->create();
-        User::create([
-            'name' => 'Peserta Didik 1',
-            'email' => 'siswa@siswa.com',
-            'password' => Hash::make('password'),
-        ]);
+        // Biodata::factory(100)->create();
+        // User::create([
+        //     'name' => 'Peserta Didik 1',
+        //     'email' => 'siswa@siswa.com',
+        //     'password' => Hash::make('password'),
+        // ]);
         UserAdmin::create([
             'name' => 'Administrator',
             'username' => 'admin',
