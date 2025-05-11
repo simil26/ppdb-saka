@@ -45,6 +45,9 @@
                                 </h3>
 
                                 <p>
+                                    Terima kasih telah melakukan pendaftaran di SD Alam Amani Karawang. Silahkan lengkapi data diri anda pada menu disamping untuk melanjutkan proses pendaftaran.
+                                </p>
+                                <p>
                                     Ini adalah halaman dashboard. Anda dapat melihat proses pendaftaran anda disini.
                                 </p>
                             </div>
