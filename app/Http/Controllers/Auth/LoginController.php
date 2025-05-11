@@ -24,22 +24,20 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $rules = [
-            'email' => 'required|email',
+            'noreg_ppdb' => 'required',
             'password' => 'required',
         ];
 
         $messages = [
-            'email.required' => 'Email harus diisi',
-            'email.email' => 'Email tidak valid',
-            'password.required' => 'Password harus diisi',
+            'noreg_ppdb.required' => 'Nomor Pendaftaran harus diisi',
+            'password.required' => 'Kata sandi harus diisi',
         ];
         try {
             $credentials = $this->validate($request, $rules, $messages);
             $auth = Auth::attempt($credentials);
             if ($auth) {
-                $user = User::where('email', $request->email)->first();
-                $request->session()->put('email', $user->email);
-                $request->session()->put('name', $user->name);
+                $user = User::where('noreg_ppdb', $request->noreg_ppdb)->first();
+                $request->session()->put('noreg_ppdb', $user->noreg_ppdb);
                 return redirect()->route('user.dashboard')->with('loginSession', 'Login berhasil');
             } else {
                 return redirect()->back()->withInput()->with('loginError', 'Email atau password salah');
