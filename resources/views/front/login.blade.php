@@ -5,7 +5,7 @@
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-                <a href="{{ url('') }}" class="h1"><b>PPDB</b> Saka</a>
+                <a href="{{ url('') }}" class="h1"><b>PPDB</b> <br> SD Alam Amani</a>
             </div>
             <div class="card-body">
                 <p class="login-box-msg">Login terlebih dahulu untuk melakukan pendaftaran</p>
