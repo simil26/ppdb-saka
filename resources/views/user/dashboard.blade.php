@@ -134,39 +134,91 @@
 
                         <!-- Calendar -->
                         <div class="card bg-gradient-white">
-                            <div class="card-header border-0">
-
+                            <div class="card-header">
                                 <h3 class="card-title">
-                                    <i class="far fa-calendar-alt"></i>
-                                    Calendar
+                                    <i class="far fa-calendar-alt mr-1"></i>
+                                    Jadwal PPDB SD Alam Amani
                                 </h3>
-                                <!-- tools card -->
-                                <div class="card-tools">
-                                    <!-- button with a dropdown -->
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-white btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52">
-                                            <i class="fas fa-bars"></i>
-                                        </button>
-                                        <div class="dropdown-menu" role="menu">
-                                            <a href="#" class="dropdown-item">Add new event</a>
-                                            <a href="#" class="dropdown-item">Clear events</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a href="#" class="dropdown-item">View calendar</a>
-                                        </div>
-                                    </div>
-                                    <button type="button" class="btn btn-white btn-sm" data-card-widget="collapse">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-white btn-sm" data-card-widget="remove">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                                <!-- /. tools -->
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body pt-0">
-                                <!--The calendar -->
-                                <div id="calendar" style="width: 100%"></div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="timeline">
+                                            <!-- timeline item -->
+                                            <div>
+                                                <i class="fas fa-exclamation bg-yellow"></i>
+                                                <div class="timeline-item">
+                                                    <h3 class="timeline-header text-blue font-weight-bold">Pengisian Data Diri</h3>
+
+                                                    <div class="timeline-body">
+                                                        Senin, 05 Mei 2025 s/d Jumat, 30 Mei 2025
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- END timeline item --><!-- timeline item --><!-- timeline item -->
+                                            <div>
+                                                <i class="fas fa-clock bg-gray"></i>
+                                                <div class="timeline-item">
+                                                    <h3 class="timeline-header text-blue font-weight-bold">Psikotes</h3>
+
+                                                    <div class="timeline-body">
+                                                        Senin, 02 Juni 2025 s/d Jumat, 06 Juni 2025
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- END timeline item --><!-- timeline item -->
+                                            <!-- timeline item -->
+                                            <div>
+                                                <i class="fas fa-clock bg-gray"></i>
+                                                <div class="timeline-item">
+                                                    <h3 class="timeline-header text-blue font-weight-bold">Wawancara</h3>
+
+                                                    <div class="timeline-body">
+                                                        Senin, 09 Juni 2025 s/d Jumat, 13 Juni 2025
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- END timeline item --><!-- timeline item -->
+                                            <div>
+                                                <i class="fas fa-clock bg-gray"></i>
+                                                <div class="timeline-item">
+                                                    <h3 class="timeline-header text-blue font-weight-bold">Sit In/Pre-School</h3>
+
+                                                    <div class="timeline-body">
+                                                        Senin, 16 Juni 2025 s/d Jumat, 20 Juni 2025
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- END timeline item --><!-- timeline item -->
+                                            <div>
+                                                <i class="fas fa-clock bg-gray"></i>
+                                                <div class="timeline-item">
+                                                    <h3 class="timeline-header text-blue font-weight-bold">Sekolah Orang Tua (SOT)</h3>
+
+                                                    <div class="timeline-body">
+                                                        Senin, 23 Juni 2025 s/d Jumat, 27 Juni 2025
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- END timeline item --><!-- timeline item -->
+                                            <div>
+                                                <i class="fas fa-clock bg-gray"></i>
+                                                <div class="timeline-item">
+                                                    <h3 class="timeline-header text-blue font-weight-bold">Pengumuman Seleksi PPDB</h3>
+
+                                                    <div class="timeline-body">
+                                                        Senin, 30 Juni 2025
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- END timeline item -->
+                                            <div>
+                                                <i class="fas fa-exclamation bg-gray"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <!-- /.card-body -->
                         </div>
