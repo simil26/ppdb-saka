@@ -28,10 +28,10 @@
                 <form action="{{ route('loginAttempt') }}" method="post">
                     @csrf
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Email" value="{{ old('email') }}">
+                        <input type="text" class="form-control" name="noreg_ppdb" id="noreg_ppdb" placeholder="Nomor Pendaftaran" value="{{ old('noreg_ppdb') }}">
                         <div class="input-group-append">
                             <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
+                                <span class="fas fa-user"></span>
                             </div>
                         </div>
                     </div>
@@ -39,7 +39,7 @@
                         <input type="password" class="form-control" name="password" id="password" placeholder="Password">
                         <div class="input-group-append">
                             <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
+                                <span class="fas fa-key"></span>
                             </div>
                         </div>
                     </div>
