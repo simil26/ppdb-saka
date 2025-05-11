@@ -17,7 +17,7 @@
                     </div>
                 @endif
 
-                <form action{{ route('register.store') }}" method="post">
+                <form action{{ route('register.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" name="name" placeholder="Nama Lengkap Calon Siswa" value="{{ old('name') }}">
@@ -36,7 +36,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" name="password" placeholder="Kata sandi">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Kata sandi">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -44,12 +44,29 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" name="confirm_password" placeholder="Konfirmasi kata sandi">
+                        <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Konfirmasi kata sandi">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
                             </div>
                         </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="custom-file">
+                            <input type="file" name="bukti_bayar" role="button" class="custom-file-input" id="bukti_bayar">
+                            <label class="custom-file-label" for="bukti_bayar">Bukti Pembayaran</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="icheck-primary">
+                                <input type="checkbox" id="show-password">
+                                <label for="show-password">
+                                    Tampilkan sandi
+                                </label>
+                            </div>
+                        </div>
+                        <!-- /.col -->
                     </div>
                     <div class="row">
                         <div class="col-12 mb-4">
@@ -64,7 +81,7 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary btn-block">
+                            <button type="submit" class="btn btn-primary btn-block" disabled="true">
                                 Daftar
                             </button>
                         </div>
@@ -95,9 +112,24 @@
             $('#show-password').on('change', function() {
                 if ($(this).is(':checked')) {
                     $('input#password').attr('type', 'text');
+                    $('input#confirm_password').attr('type', 'text');
                 } else {
                     $('input#password').attr('type', 'password');
+                    $('input#confirm_password').attr('type', 'password');
                 }
+            });
+
+            $("#agreeTerms").on('change', function() {
+                if ($(this).is(':checked')) {
+                    $("button[type='submit']").removeAttr('disabled');
+                } else {
+                    $("button[type='submit']").attr('disabled', "disabled");
+                }
+            });
+
+            $(".custom-file-input").on("change", function() {
+                var fileName = $(this).val().split("\\").pop();
+                $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
             });
         });
     </script>
