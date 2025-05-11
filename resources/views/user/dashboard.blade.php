@@ -74,49 +74,91 @@
                                         <div class="timeline">
                                             <!-- timeline item -->
                                             <div>
-                                                <i class="fas fa-check bg-green"></i>
+                                                <i class="fas {{ session('biodata') == 'done' ? 'fa-check bg-green' : 'fa-exclamation bg-yellow' }}"></i>
                                                 <div class="timeline-item">
                                                     <h3 class="timeline-header text-blue font-weight-bold">Data Diri</h3>
 
                                                     <div class="timeline-body">
-                                                        Data diri sudah terisi dengan lengkap. Silahkan lanjut mengisi data orang tua.
+                                                        @if (session('biodata') == 'done')
+                                                            Data diri sudah terisi dengan lengkap. Silahkan lanjut mengisi data orang tua.
+                                                        @elseif(session('biodata') == 'ongoing')
+                                                            Anda belum selesai mengisi data diri. Silahkan lengkapi data diri terlebih dahulu.
+                                                        @else
+                                                            Anda belum mengisi data diri. Silahkan isi data diri terlebih dahulu.
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
                                             <!-- END timeline item --><!-- timeline item -->
                                             <div>
-                                                <i class="fas fa-exclamation bg-yellow"></i>
+                                                <i class="fas {{ session('data_orang_tua') == 'done' ? 'fa-check bg-green' : (session('biodata') == 'done' || session('data_orang_tua') == 'ongoing' ? 'fa-exclamation bg-yellow' : 'fa-clock bg-gray') }}"></i>
                                                 <div class="timeline-item">
                                                     <h3 class="timeline-header text-blue font-weight-bold">Data Orang Tua</h3>
 
                                                     <div class="timeline-body">
-                                                        Anda belum mengisi data orang tua. Silahkan isi data orang tua terlebih dahulu.
+                                                        @if (session('data_orang_tua') == 'done')
+                                                            Data orang tua sudah terisi dengan lengkap. Silahkan lanjut mengisi data periodik.
+                                                        @elseif (session('data_orang_tua') == 'ongoing')
+                                                            Anda belum selesai mengisi data orang tua. Silahkan lengkapi data orang tua terlebih dahulu.
+                                                        @else
+                                                            Anda belum mengisi data diri. Silahkan isi data diri terlebih dahulu untuk dapat mengisi data orang tua.
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
                                             <!-- END timeline item --><!-- timeline item -->
                                             <div>
-                                                <i class="fas fa-clock bg-gray"></i>
+                                                <i class="fas {{ session('data_periodik') == 'done' ? 'fa-check bg-green' : (session('data_orang_tua') == 'done' || session('data_periodik') == 'ongoing' ? 'fa-exclamation bg-yellow' : 'fa-clock bg-gray') }}"></i>
                                                 <div class="timeline-item">
                                                     <h3 class="timeline-header text-blue font-weight-bold">Data Periodik</h3>
 
                                                     <div class="timeline-body">
-                                                        Silahkan mengisi data orang tua terlebih dahulu, agar dapat mengisi data periodik.
+                                                        @if (session('data_periodik') == 'done')
+                                                            Data periodik sudah terisi dengan lengkap. Silahkan lanjut mengunggah dokumen.
+                                                        @elseif (session('data_periodik') == 'ongoing')
+                                                            Anda belum selesai mengisi data periodik. Silahkan lengkapi data periodik terlebih dahulu.
+                                                        @else
+                                                            Anda belum mengisi data orang tua. Silahkan isi data orang tua terlebih dahulu untuk dapat mengisi data periodik.
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
                                             <!-- END timeline item --><!-- timeline item -->
                                             <div>
-                                                <i class="fas fa-clock bg-gray"></i>
+                                                <i class="fas {{ session('unggah_dokumen') == 'done' ? 'fa-check bg-green' : (session('data_periodik') == 'done' || session('unggah_dokumen') == 'ongoing' ? 'fa-exclamation bg-yellow' : 'fa-clock bg-gray') }}"></i>
                                                 <div class="timeline-item">
                                                     <h3 class="timeline-header text-blue font-weight-bold">Unggah Dokumen</h3>
 
                                                     <div class="timeline-body">
-                                                        Silahkan mengisi data periodik terlebih dahulu, agar dapat mengunggah dokumen.
+                                                        @if (session('unggah_dokumen') == 'done')
+                                                            Dokumen pendaftaran sudah lengkap. Anda sudah dapat mengikuti tahapan Psikotes.
+                                                        @elseif (session('unggah_dokumen') == 'ongoing')
+                                                            Anda belum selesai mengunggah dokumen pendafaran. Silahkan lengkapi dokumen pendaftaran terlebih dahulu.
+                                                        @else
+                                                            Anda belum mengisi data periodik. Silahkan isi data periodik terlebih dahulu untuk dapat mengunggah dokumen pendaftaran.
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
                                             <!-- END timeline item -->
+                                            <div>
+                                                <i class="fas {{ session('unggah_dokumen') == 'done' ? 'fa-check bg-green' : 'fa-clock bg-gray' }}"></i>
+                                                @if (session('unggah_dokumen') == 'done')
+                                                    <div class="timeline-item">
+                                                        <h3 class="timeline-header text-blue font-weight-bold">Proses pendaftaran online sudah selesai</h3>
+                                                        <div class="timeline-body">
+                                                            Silahkan klik tombol dibawah ini untuk mengerjakan soal Psikotes.
+                                                        </div>
+                                                    </div>
+                                                @else
+                                                    <div class="timeline-item">
+                                                        <h3 class="timeline-header text-blue font-weight-bold">Proses pendaftaran online belum selesai</h3>
+                                                        <div class="timeline-body">
+                                                            Silahkan selesaikan proses pendaftaran online untuk dapat mengikuti tahap Psikotes.
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            </div>
                                             <div>
                                                 <i class="fas fa-exclamation bg-gray"></i>
                                             </div>
@@ -132,7 +174,7 @@
                     <!-- right col (We are only adding the ID to make the widgets sortable)-->
                     <section class="col-lg-5 connectedSortable">
 
-                        <!-- Calendar -->
+                        <!-- Schedule -->
                         <div class="card bg-gradient-white">
                             <div class="card-header">
                                 <h3 class="card-title">
@@ -147,7 +189,7 @@
                                         <div class="timeline">
                                             <!-- timeline item -->
                                             <div>
-                                                <i class="fas fa-exclamation bg-yellow"></i>
+                                                <i class="fas {{ session('unggah_dokumen') == 'done' ? 'fa-check bg-green' : 'fa-exclamation bg-yellow' }}"></i>
                                                 <div class="timeline-item">
                                                     <h3 class="timeline-header text-blue font-weight-bold">Pengisian Data Diri</h3>
 
