@@ -30,7 +30,7 @@
                         @if ($biodata && $dataOrangTua && $dataPeriodik && $dataKesejahteraan && $uploadFiles)
                             <div class="callout callout-success bg-success">
                                 <h3>
-                                    Selamat! <br>
+                                    Selamat datang! Calon Peserta Didik dengan No. {{ session('noreg_ppdb') }} <br>
                                     Anda sudah menyelesaikan proses pendaftaran Penerimaan Peserta Didik Baru.
                                 </h3>
                                 <p>
@@ -40,7 +40,7 @@
                         @else
                             <div class="callout callout-info">
                                 <h3>
-                                    Selamat datang! <br>
+                                    Selamat datang! <br /> Calon Peserta Didik dengan No. <b>{{ session('noreg_ppdb') }}</b><br>
                                     di Laman Pendaftaran PPDB SD Alam Amani Karawang.
                                 </h3>
 
