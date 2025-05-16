@@ -9,6 +9,7 @@ use App\Models\DataKesejahteraan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\DokumenPendaftaran;
+use App\Models\User;
 
 class DashboardController extends Controller
 {
@@ -28,6 +29,7 @@ class DashboardController extends Controller
         $dataPeriodik = DataPeriodik::where('noreg_ppdb', session('noreg_ppdb'))->first();
         $dataKesejahteraan = DataKesejahteraan::where('noreg_ppdb', session('noreg_ppdb'))->first();
         $uploadFiles = DokumenPendaftaran::where('noreg_ppdb', session('noreg_ppdb'))->first();
+        $user = User::where('noreg_ppdb', session('noreg_ppdb'))->first();
 
         //data dari 5 variable diatas akan dikirimkan ke view dashboard.blade.php melalui variable $data
         $data = [
@@ -37,7 +39,8 @@ class DashboardController extends Controller
             'dataOrangTua' => $dataOrangTua,
             'dataPeriodik' => $dataPeriodik,
             'dataKesejahteraan' => $dataKesejahteraan,
-            'uploadFiles' => $uploadFiles
+            'uploadFiles' => $uploadFiles,
+            'userName' => $user['name']
         ];
 
         //fungsi if ini digunakan untuk mengecek apakah dokumen pendaftaran sudah di unggah atau belum
