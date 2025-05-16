@@ -14,7 +14,7 @@
                 <img src="{{ url('assets/adminlte') }}/dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <span class="d-block text-white">{{ session('name') }}</span>
+                <span class="d-block text-white">{{ $userName }}</span>
             </div>
         </div>
 
