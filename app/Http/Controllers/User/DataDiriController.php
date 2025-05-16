@@ -11,21 +11,14 @@ class DataDiriController extends Controller
 {
     public function index()
     {
-        if (!session()->has('email')) {
+        if (!session()->has('noreg_ppdb')) {
             return redirect()->route('login');
         }
         $biodata = [];
-        if (Session::has('noreg_ppdb')) {
+        if (Session::has('biodata_status')) {
             $biodata = Biodata::where('noreg_ppdb', Session::get('noreg_ppdb'))->first();
-            if ($biodata) {
-                session()->put('noreg_ppdb', $biodata->noreg_ppdb);
-            }
-        } else if (auth()->user()->id) {
-            $biodata = Biodata::where('user_id', auth()->user()->id)->first();
-            if ($biodata) {
-                session()->put('noreg_ppdb', $biodata->noreg_ppdb);
-            }
         }
+
         $data = [
             'title' => 'Data Diri',
             'active' => 'data-diri',
