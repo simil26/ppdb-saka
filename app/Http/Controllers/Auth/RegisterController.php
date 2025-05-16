@@ -68,6 +68,7 @@ class RegisterController extends Controller
             $result = User::create($credentials);
             //Jika berhasil, simpan data pengguna ke session lalu diarahkan ke halaman dashboard
             $request->session()->put('noreg_ppdb', $result->noreg_ppdb);
+            $request->session()->put('userName', $result->name);
 
             return redirect()->route('user.dashboard')->with('loginSession', 'Login berhasil');
         } catch (\Exception $e) {

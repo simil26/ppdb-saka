@@ -38,6 +38,7 @@ class LoginController extends Controller
             if ($auth) {
                 $user = User::where('noreg_ppdb', $request->noreg_ppdb)->first();
                 $request->session()->put('noreg_ppdb', $user->noreg_ppdb);
+                $request->session()->put('userName', $user->name);
                 return redirect()->route('user.dashboard')->with('loginSession', 'Login berhasil');
             } else {
                 return redirect()->back()->withInput()->with('loginError', 'Email atau password salah');
