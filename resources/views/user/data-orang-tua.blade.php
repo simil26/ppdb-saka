@@ -39,8 +39,8 @@
                 @elseif (session()->has('warning'))
                     <div class="alert alert-warning alert-dismissible">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <h5><i class="icon fas fa-exclamation"></i> Silahkan isi data diri terlebih dahulu!</h5>
-                        Anda tidak diperkenankan mengakses halaman formulir data orang tua sebelum anda mengisi data diri.
+                        <h5><i class="icon fas fa-exclamation"></i> Silahkan isi data orang tua terlebih dahulu!</h5>
+                        Anda tidak diperkenankan mengakses halaman formulir data periodik sebelum anda mengisi data orang tua.
                     </div>
                 @endif
                 @if ($dataOrangTua)
