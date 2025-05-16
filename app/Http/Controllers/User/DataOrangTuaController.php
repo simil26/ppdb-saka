@@ -11,20 +11,17 @@ class DataOrangTuaController extends Controller
 {
     public function index()
     {
-        if (!session()->has('email')) {
+        if (!session()->has('noreg_ppdb')) {
             return redirect()->route('login');
+        } else if (!session()->has('biodata_status')) {
+            return redirect()->route('user.dataDiri')->with('warning', 'Silahkan lengkapi data diri terlebih dahulu!');
         }
-        if (Session::has('noreg_ppdb')) {
+
+        $dataOrangTua = [];
+        if (Session::has('dataOrangTua_status')) {
             $dataOrangTua = DataOrangTua::where('noreg_ppdb', Session::get('noreg_ppdb'))->first();
-            if ($dataOrangTua) {
-                session()->put('noreg_ppdb', $dataOrangTua->noreg_ppdb);
-            }
-        } else if (auth()->user()->id) {
-            $dataOrangTua = DataOrangTua::where('user_id', auth()->user()->id)->first();
-            if ($dataOrangTua) {
-                session()->put('noreg_ppdb', $dataOrangTua->noreg_ppdb);
-            }
         }
+
         $data = [
             'title' => 'Data Orang Tua',
             'active' => 'data-orang-tua',
@@ -35,7 +32,6 @@ class DataOrangTuaController extends Controller
 
     public function store(Request $request)
     {
-        $userID = auth()->user()->id;
         $rules = [
             'noreg_ppdb' => 'required',
             'nama_ayah' => 'required|min:3|max:191',
@@ -84,10 +80,10 @@ class DataOrangTuaController extends Controller
             'alamat_ibu.max' => 'Alamat Ibu maksimal 191 karakter!',
         ];
 
-        $data = $request->validate($rules, $errorMessages);
-        $data['user_id'] = $userID;
+        $dataOrantTua = $request->validate($rules, $errorMessages);
         try {
-            $result = DataOrangTua::create($data);
+            $result = DataOrangTua::create($dataOrantTua);
+            Session::put('dataOrangTua_status', 'done');
             return redirect('user/data-orang-tua')->with('success', 'Data Orang Tua berhasil disimpan!');
         } catch (\Exception $e) {
             return redirect('user/data-orang-tua')->with('error', 'Data Orang Tua gagal disimpan!');
@@ -143,9 +139,9 @@ class DataOrangTuaController extends Controller
             'alamat_ibu.max' => 'Alamat Ibu maksimal 191 karakter!',
         ];
 
-        $data = $request->validate($rules, $errorMessages);
+        $dataOrantTua = $request->validate($rules, $errorMessages);
         try {
-            $result = DataOrangTua::where('noreg_ppdb', $data['noreg_ppdb'])->update($data);
+            $result = DataOrangTua::where('noreg_ppdb', $dataOrantTua['noreg_ppdb'])->update($dataOrantTua);
             return redirect('user/data-orang-tua')->with('success', 'Data Orang Tua berhasil disimpan!');
         } catch (\Exception $e) {
             return redirect('user/data-orang-tua')->with('error', 'Data Orang Tua gagal disimpan!');
