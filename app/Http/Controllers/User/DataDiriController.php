@@ -30,7 +30,6 @@ class DataDiriController extends Controller
 
     public function store(Request $request)
     {
-        $userID = auth()->user()->id;
 
         $rules = [
             'gelombang' => 'required',
@@ -98,21 +97,16 @@ class DataDiriController extends Controller
         ];
 
         $biodata = $request->validate($rules, $errorMessages);
-        $biodata['noreg_ppdb'] = '';
-        $biodata['user_id'] = $userID;
-        if ($request->input('noreg_ppdb')) {
-            $noreg_ppdb = $request->input('noreg_ppdb');
+        $biodata['noreg_ppdb'] = Session::get('noreg_ppdb');
+        if (session()->has('biodata_status')) {
+            $noreg_ppdb = Session::get('noreg_ppdb');
             $biodata['noreg_ppdb'] = $noreg_ppdb;
             Biodata::where('noreg', $noreg_ppdb)->update($biodata);
         } else {
             try {
-                $noreg = 'PPDB-' . date('Y') . '-' . rand(1000, 9999);
-                while ($noreg == Biodata::where('noreg_ppdb', $noreg)->first()) {
-                    $noreg = 'PPDB-' . date('Y') . '-' . rand(1000, 9999);
-                }
-                $biodata['noreg_ppdb'] = $noreg;
-                $result = Biodata::create($biodata);
-                $request->session()->put('noreg_ppdb', $result->noreg_ppdb);
+                $biodata['noreg_ppdb'] = Session::get('noreg_ppdb');
+                Biodata::create($biodata);
+                Session::put('biodata_status', 'done');
                 return redirect()->to('user/data-diri')->with('success', 'Data berhasil disimpan');
             } catch (\Exception $e) {
                 return redirect()->to('user/data-diri')->with('error', 'Data gagal disimpan');
@@ -192,6 +186,7 @@ class DataDiriController extends Controller
         $biodata = $request->validate($rules, $errorMessages);
         try {
             $result = Biodata::where('noreg_ppdb', $biodata['noreg_ppdb'])->update($biodata);
+
             return redirect()->to('user/data-diri')->with('success', 'Data berhasil diperbaharui');
         } catch (\Exception $e) {
             return redirect()->to('user/data-diri')->with('error', 'Data gagal disimpan');
