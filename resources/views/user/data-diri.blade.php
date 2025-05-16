@@ -98,6 +98,7 @@
                                     <label for="tahun-lulus">Tahun Lulus</label>
                                     <select class="form-control" name="tahun_lulus" id="tahun-lulus" value="{{ $biodata['tahun_lulus'] ?: '' }}" {{ $biodata['tahun_lulus'] ? 'disabled' : '' }}>
                                         <option>Pilih :</option>
+                                        <option value="2025" {{ $biodata['tahun_lulus'] == '2025' ? 'selected' : '' }}>2025</option>
                                         <option value="2024" {{ $biodata['tahun_lulus'] == '2024' ? 'selected' : '' }}>2024</option>
                                         <option value="2023" {{ $biodata['tahun_lulus'] == '2023' ? 'selected' : '' }}>2023</option>
                                         <option value="2022" {{ $biodata['tahun_lulus'] == '2022' ? 'selected' : '' }}>2022</option>
