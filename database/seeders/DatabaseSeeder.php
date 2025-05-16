@@ -35,5 +35,13 @@ class DatabaseSeeder extends Seeder
             'username' => 'admin',
             'password' => Hash::make('admin1234'),
         ]);
+
+        User::create([
+            'noreg_ppdb' => 'PPDB-202505163812',
+            'name' => 'Muhamad Ramdani',
+            'email' => 'mrh@siswa.com',
+            'password' => Hash::make('ramdani@3001'),
+            'bukti_bayar' => 'PPDB-202505163812-bukti_bayar.jpg'
+        ]);
     }
 }
