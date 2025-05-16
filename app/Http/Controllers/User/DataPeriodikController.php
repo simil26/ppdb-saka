@@ -12,22 +12,17 @@ class DataPeriodikController extends Controller
 {
     public function index()
     {
-        if (!session()->has('email')) {
+        if (!session()->has('noreg_ppdb')) {
             return redirect()->route('login');
+        } else if (!session()->has('dataOrangTua_status')) {
+            return redirect()->route('user.dataOrangTua')->with('warning', 'Silahkan lengkapi data orang tua terlebih dahulu');
         }
 
-        if (Session::has('noreg_ppdb')) {
+        $dataPeriodik = [];
+        $dataKesejahteraan = [];
+        if (Session::has('dataPeriodik_status')) {
             $dataPeriodik = DataPeriodik::where('noreg_ppdb', session('noreg_ppdb'))->first();
             $dataKesejahteraan = DataKesejahteraan::where('noreg_ppdb', session('noreg_ppdb'))->first();
-            if ($dataPeriodik) {
-                session()->put('noreg_ppdb', $dataPeriodik->noreg_ppdb);
-            }
-        } else if (auth()->user()->id) {
-            $dataPeriodik = DataPeriodik::where('user_id', auth()->user()->id)->first();
-            $dataKesejahteraan = DataKesejahteraan::where('user_id', auth()->user()->id)->first();
-            if ($dataPeriodik) {
-                session()->put('noreg_ppdb', $dataPeriodik->noreg_ppdb);
-            }
         }
 
         $data = [
@@ -42,7 +37,6 @@ class DataPeriodikController extends Controller
 
     public function store(Request $request)
     {
-        $userID = auth()->user()->id;
         $dataKesejahteraan = [];
         $rules = [
             'noreg_ppdb' => 'required',
@@ -68,7 +62,7 @@ class DataPeriodikController extends Controller
             'jumlah_saudara.required' => 'Jumlah saudara harus diisi',
         ];
 
-        $credentials = $request->validate($rules, $errorMessages);
+        $dataPeriodik = $request->validate($rules, $errorMessages);
         $dataKesejahteraan['noreg_ppdb'] = $request->input('noreg_ppdb');
         $dataKesejahteraan['is_kip'] = $request->input('is_kip');
         $dataKesejahteraan['is_kis'] = $request->input('is_kis');
@@ -81,12 +75,15 @@ class DataPeriodikController extends Controller
         $dataKesejahteraan['nomor_kps'] = $request->input('nomor_kps') ?? '-';
         $dataKesejahteraan['nomor_pkh'] = $request->input('nomor_pkh') ?? '-';
 
-        // dd($dataKesejahteraan);
+        // dd([
+        //     'dataPeriodik' => $dataPeriodik,
+        //     'dataKesejahteraan' => $dataKesejahteraan
+        // ]);
         try {
-            $credentials['user_id'] = $userID;
-            $dataKesejahteraan['user_id'] = $userID;
-            $resutlPeriodik = DataPeriodik::create($credentials);
+            $resutlPeriodik = DataPeriodik::create($dataPeriodik);
             $resultKesejahteraan = DataKesejahteraan::create($dataKesejahteraan);
+            Session::put('dataPeriodik_status', 'done');
+            Session::put('dataKesejahteraan_status', 'done');
             return redirect()->back()->with('success', 'Data periodik berhasil disimpan');
         } catch (\Exception $e) {
             return redirect()->back()->withInput()->with('error', $e->getMessage());
@@ -119,7 +116,7 @@ class DataPeriodikController extends Controller
             'jumlah_saudara.required' => 'Jumlah saudara harus diisi',
         ];
 
-        $credentials = $request->validate($rules, $errorMessages);
+        $dataPeriodik = $request->validate($rules, $errorMessages);
         $dataKesejahteraan['noreg_ppdb'] = $request->input('noreg_ppdb');
         $dataKesejahteraan['is_kip'] = $request->input('is_kip');
         $dataKesejahteraan['is_kis'] = $request->input('is_kis');
@@ -134,7 +131,7 @@ class DataPeriodikController extends Controller
 
         // dd($dataKesejahteraan);
         try {
-            $resutlPeriodik = DataPeriodik::where('noreg_ppdb', $request->input('noreg_ppdb'))->update($credentials);
+            $resutlPeriodik = DataPeriodik::where('noreg_ppdb', $request->input('noreg_ppdb'))->update($dataPeriodik);
             $resultKesejahteraan = DataKesejahteraan::where('noreg_ppdb', $request->input('noreg_ppdb'))->update($dataKesejahteraan);
             return redirect()->back()->with('success', 'Data periodik berhasil disimpan');
         } catch (\Exception $e) {
