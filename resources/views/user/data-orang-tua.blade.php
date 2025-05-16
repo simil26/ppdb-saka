@@ -30,7 +30,7 @@
                         <h5><i class="icon fas fa-check"></i> Data berhasil disimpan!</h5>
                         Data yang anda masukan berhasil disimpan. Silahkan lanjut untuk mengisi Data Periodik.
                     </div>
-                @elseif (session()->has('success'))
+                @elseif (session()->has('error'))
                     <div class="alert alert-danger alert-dismissible">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                         <h5><i class="icon fas fa-ban"></i> Data gagal disimpan!</h5>
@@ -197,7 +197,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="alamat_ibu">Alamat Ibu</label>
-                                    <textarea name="alamat_ibu" id="alamat_ibu" cols="30" rows="5" {{ $dataOrangTua['tanggal_lahir_ayah'] ? 'disabled' : '' }} name="alamat_ibu" class="form-control">{{ $dataOrangTua['tanggal_lahir_ayah'] }}</textarea>
+                                    <textarea name="alamat_ibu" id="alamat_ibu" cols="30" rows="5" {{ $dataOrangTua['alamat_ibu'] ? 'disabled' : '' }} name="alamat_ibu" class="form-control">{{ $dataOrangTua['alamat_ibu'] }}</textarea>
                                 </div>
                             </div>
                         </div>
