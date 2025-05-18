@@ -43,7 +43,7 @@
                         Anda tidak diperkenankan mengakses halaman formulir data orang tua sebelum anda mengisi data diri.
                     </div>
                 @endif
-                @if (session()->has('biodata_status'))
+                @if ($biodata)
                     <div class="row my-2">
                         <div class="col-12">
                             <button class="btn btn-success" type="button" onclick="enabledEdit()">
