@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\StatusPendaftaran;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -32,6 +33,7 @@ class LoginController extends Controller
             'noreg_ppdb.required' => 'Nomor Pendaftaran harus diisi',
             'password.required' => 'Kata sandi harus diisi',
         ];
+
         try {
             $credentials = $this->validate($request, $rules, $messages);
             $auth = Auth::attempt($credentials);
