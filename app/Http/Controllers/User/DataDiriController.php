@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Models\Biodata;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\StatusPendaftaran;
 use Illuminate\Support\Facades\Session;
 
 class DataDiriController extends Controller
@@ -15,7 +16,8 @@ class DataDiriController extends Controller
             return redirect()->route('login');
         }
         $biodata = [];
-        if (Session::has('biodata_status')) {
+        $biodataStatus = StatusPendaftaran::where('noreg_ppdb', Session::get('noreg_ppdb'))->first();
+        if ($biodataStatus['biodata_status'] == '1') {
             $biodata = Biodata::where('noreg_ppdb', Session::get('noreg_ppdb'))->first();
         }
 
