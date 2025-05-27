@@ -10,7 +10,7 @@ class UploadFilesController extends Controller
 {
     public function index()
     {
-        if (!session()->has('email')) {
+        if (!session()->has('noreg_ppdb')) {
             return redirect()->route('login');
         }
         $data = [
