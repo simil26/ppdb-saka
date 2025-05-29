@@ -9,6 +9,7 @@ use App\Models\DataKesejahteraan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\DokumenPendaftaran;
+use App\Models\StatusDaftarOnline;
 use App\Models\User;
 
 class DashboardController extends Controller
@@ -21,14 +22,15 @@ class DashboardController extends Controller
         if (!session()->has('noreg_ppdb')) {
             return redirect()->route('login');
         }
+        $noreg_ppdb = session('noreg_ppdb');
 
         //5 variable dibawah ini digunakan untuk mengambil data dari database
         //data ini digunakan untuk melakukan pengecekan data yang sudah diisi oleh user atau belum, untuk digunakan pada komponen status pendaftaran
-        $biodata = Biodata::where('noreg_ppdb', session('noreg_ppdb'))->first();
-        $dataOrangTua = DataOrangTua::where('noreg_ppdb', session('noreg_ppdb'))->first();
-        $dataPeriodik = DataPeriodik::where('noreg_ppdb', session('noreg_ppdb'))->first();
-        $dataKesejahteraan = DataKesejahteraan::where('noreg_ppdb', session('noreg_ppdb'))->first();
-        $uploadFiles = DokumenPendaftaran::where('noreg_ppdb', session('noreg_ppdb'))->first();
+        $biodata = Biodata::where('noreg_ppdb', $noreg_ppdb)->first();
+        $dataOrangTua = DataOrangTua::where('noreg_ppdb', $noreg_ppdb)->first();
+        $dataPeriodik = DataPeriodik::where('noreg_ppdb', $noreg_ppdb)->first();
+        $dataKesejahteraan = DataKesejahteraan::where('noreg_ppdb', $noreg_ppdb)->first();
+        $uploadFiles = DokumenPendaftaran::where('noreg_ppdb', $noreg_ppdb)->first();
 
         //data dari 5 variable diatas akan dikirimkan ke view dashboard.blade.php melalui variable $data
         $data = [
@@ -38,7 +40,8 @@ class DashboardController extends Controller
             'dataOrangTua' => $dataOrangTua,
             'dataPeriodik' => $dataPeriodik,
             'dataKesejahteraan' => $dataKesejahteraan,
-            'uploadFiles' => $uploadFiles
+            'uploadFiles' => $uploadFiles,
+            'statusDaftarOnline' => StatusDaftarOnline::where('noreg_ppdb', $noreg_ppdb)->first(),
         ];
 
         //fungsi if ini digunakan untuk mengecek apakah dokumen pendaftaran sudah di unggah atau belum
