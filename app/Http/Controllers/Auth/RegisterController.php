@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\StatusDaftarOnline;
 
 class RegisterController extends Controller
 {
@@ -66,6 +67,18 @@ class RegisterController extends Controller
 
             //Menyimpan data ke database
             $result = User::create($credentials);
+
+            $statusDaftarOnline = [
+                'noreg_ppdb' => $noreg_ppdb,
+                'statusBiodata' => '0',
+                'statusDataOrangTua' => '0',
+                'statusDataPeriodik' => '0',
+                'statusKesejahteraan' => '0',
+                'statusDokumenPendaftaran' => '0',
+                'statusFinalisasi' => '0',
+            ];
+            //Menyimpan status pendaftaran online ke database
+            $resultsStatusDaftar = StatusDaftarOnline::create($statusDaftarOnline);
             //Jika berhasil, simpan data pengguna ke session lalu diarahkan ke halaman dashboard
             $request->session()->put('noreg_ppdb', $result->noreg_ppdb);
             $request->session()->put('userName', $result->name);
