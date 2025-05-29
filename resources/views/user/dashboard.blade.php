@@ -74,14 +74,15 @@
                                         <div class="timeline">
                                             <!-- timeline item -->
                                             <div>
-                                                <i class="fas {{ session('biodata') == 'done' ? 'fa-check bg-green' : 'fa-exclamation bg-yellow' }}"></i>
+                                                <i class="fas {{ $statusDaftarOnline['statusBiodata'] == '1' ? 'fa-check bg-green' : 'fa-exclamation bg-yellow' }}"></i>
                                                 <div class="timeline-item">
                                                     <h3 class="timeline-header text-blue font-weight-bold">Data Diri</h3>
 
                                                     <div class="timeline-body">
-                                                        @if (session('biodata') == 'done')
+
+                                                        @if ($statusDaftarOnline['statusBiodata'] == '1')
                                                             Data diri sudah terisi dengan lengkap. Silahkan lanjut mengisi data orang tua.
-                                                        @elseif(session('biodata') == 'ongoing')
+                                                        @elseif($statusDaftarOnline['statusBiodata'] == '0')
                                                             Anda belum selesai mengisi data diri. Silahkan lengkapi data diri terlebih dahulu.
                                                         @else
                                                             Anda belum mengisi data diri. Silahkan isi data diri terlebih dahulu.
@@ -91,14 +92,14 @@
                                             </div>
                                             <!-- END timeline item --><!-- timeline item -->
                                             <div>
-                                                <i class="fas {{ session('data_orang_tua') == 'done' ? 'fa-check bg-green' : (session('biodata') == 'done' || session('data_orang_tua') == 'ongoing' ? 'fa-exclamation bg-yellow' : 'fa-clock bg-gray') }}"></i>
+                                                <i class="fas {{ $statusDaftarOnline['statusDataOrangTua'] == '1' ? 'fa-check bg-green' : ($statusDaftarOnline['statusBiodata'] == '1' || $statusDaftarOnline['statusDataOrangTua'] == '0' ? 'fa-exclamation bg-yellow' : 'fa-clock bg-gray') }}"></i>
                                                 <div class="timeline-item">
                                                     <h3 class="timeline-header text-blue font-weight-bold">Data Orang Tua</h3>
 
                                                     <div class="timeline-body">
-                                                        @if (session('data_orang_tua') == 'done')
+                                                        @if ($statusDaftarOnline['statusDataOrangTua'] == '1')
                                                             Data orang tua sudah terisi dengan lengkap. Silahkan lanjut mengisi data periodik.
-                                                        @elseif (session('data_orang_tua') == 'ongoing')
+                                                        @elseif ($statusDaftarOnline['statusDataOrangTua'] == '0')
                                                             Anda belum selesai mengisi data orang tua. Silahkan lengkapi data orang tua terlebih dahulu.
                                                         @else
                                                             Anda belum mengisi data diri. Silahkan isi data diri terlebih dahulu untuk dapat mengisi data orang tua.
@@ -108,15 +109,19 @@
                                             </div>
                                             <!-- END timeline item --><!-- timeline item -->
                                             <div>
-                                                <i class="fas {{ session('data_periodik') == 'done' ? 'fa-check bg-green' : (session('data_orang_tua') == 'done' || session('data_periodik') == 'ongoing' ? 'fa-exclamation bg-yellow' : 'fa-clock bg-gray') }}"></i>
+                                                <i class="fas {{ $statusDaftarOnline['statusDataPeriodik'] == '1' && $statusDaftarOnline['statusKesejahteraan'] == '1' ? 'fa-check bg-green' : ($statusDaftarOnline['statusDataPeriodik'] == '0' && $statusDaftarOnline['statusKesejahteraan'] == '0' ? 'fa-exclamation bg-yellow' : 'fa-clock bg-gray') }}"></i>
                                                 <div class="timeline-item">
-                                                    <h3 class="timeline-header text-blue font-weight-bold">Data Periodik</h3>
+                                                    <h3 class="timeline-header text-blue font-weight-bold">Data Periodik dan Kesejahteraan</h3>
 
                                                     <div class="timeline-body">
-                                                        @if (session('data_periodik') == 'done')
-                                                            Data periodik sudah terisi dengan lengkap. Silahkan lanjut mengunggah dokumen.
-                                                        @elseif (session('data_periodik') == 'ongoing')
+                                                        @if ($statusDaftarOnline['statusDataPeriodik'] == '1' && $statusDaftarOnline['statusKesejahteraan'] == '1')
+                                                            Data periodik dan kesejahteraan sudah terisi dengan lengkap. Silahkan lanjut mengunggah dokumen.
+                                                        @elseif ($statusDaftarOnline['statusDataPeriodik'] == '0' && $statusDaftarOnline['statusKesejahteraan'] == '0')
+                                                            Anda belum selesai mengisi data periodik dan kesejahteraan. Silahkan lengkapi data periodik dan kesejahteraan terlebih dahulu.
+                                                        @elseif ($statusDaftarOnline['statusDataPeriodik'] == '0')
                                                             Anda belum selesai mengisi data periodik. Silahkan lengkapi data periodik terlebih dahulu.
+                                                        @elseif ($statusDaftarOnline['statusKesejahteraan'] == '0')
+                                                            Anda belum selesai mengisi data kesejahteraan. Silahkan lengkapi data kesejahteraan terlebih dahulu.
                                                         @else
                                                             Anda belum mengisi data orang tua. Silahkan isi data orang tua terlebih dahulu untuk dapat mengisi data periodik.
                                                         @endif
@@ -125,14 +130,14 @@
                                             </div>
                                             <!-- END timeline item --><!-- timeline item -->
                                             <div>
-                                                <i class="fas {{ session('unggah_dokumen') == 'done' ? 'fa-check bg-green' : (session('data_periodik') == 'done' || session('unggah_dokumen') == 'ongoing' ? 'fa-exclamation bg-yellow' : 'fa-clock bg-gray') }}"></i>
+                                                <i class="fas {{ $statusDaftarOnline['statusDokumenPendaftaran'] == '1' ? 'fa-check bg-green' : ($statusDaftarOnline['statusDataPeriodik'] == '1' && $statusDaftarOnline['statusKesejahteraan'] == '1' ? 'fa-exclamation bg-yellow' : 'fa-clock bg-gray') }}"></i>
                                                 <div class="timeline-item">
                                                     <h3 class="timeline-header text-blue font-weight-bold">Unggah Dokumen</h3>
 
                                                     <div class="timeline-body">
-                                                        @if (session('unggah_dokumen') == 'done')
+                                                        @if ($statusDaftarOnline['statusDokumenPendaftaran'] == '1')
                                                             Dokumen pendaftaran sudah lengkap. Anda sudah dapat mengikuti tahapan Psikotes.
-                                                        @elseif (session('unggah_dokumen') == 'ongoing')
+                                                        @elseif ($statusDaftarOnline['statusDokumenPendaftaran'] == '0')
                                                             Anda belum selesai mengunggah dokumen pendafaran. Silahkan lengkapi dokumen pendaftaran terlebih dahulu.
                                                         @else
                                                             Anda belum mengisi data periodik. Silahkan isi data periodik terlebih dahulu untuk dapat mengunggah dokumen pendaftaran.
@@ -142,8 +147,8 @@
                                             </div>
                                             <!-- END timeline item -->
                                             <div>
-                                                <i class="fas {{ session('unggah_dokumen') == 'done' ? 'fa-check bg-green' : 'fa-clock bg-gray' }}"></i>
-                                                @if (session('unggah_dokumen') == 'done')
+                                                <i class="fas {{ $statusDaftarOnline['statusFinalisasi'] == '1' ? 'fa-check bg-green' : 'fa-clock bg-gray' }}"></i>
+                                                @if ($statusDaftarOnline['statusFinalisasi'] == '1')
                                                     <div class="timeline-item">
                                                         <h3 class="timeline-header text-blue font-weight-bold">Proses pendaftaran online sudah selesai</h3>
                                                         <div class="timeline-body">
@@ -189,7 +194,7 @@
                                         <div class="timeline">
                                             <!-- timeline item -->
                                             <div>
-                                                <i class="fas {{ session('unggah_dokumen') == 'done' ? 'fa-check bg-green' : 'fa-exclamation bg-yellow' }}"></i>
+                                                <i class="fas {{ $statusDaftarOnline['statusDokumenPendaftaran'] == '1' ? 'fa-check bg-green' : 'fa-exclamation bg-yellow' }}"></i>
                                                 <div class="timeline-item">
                                                     <h3 class="timeline-header text-blue font-weight-bold">Pengisian Data Diri</h3>
 
