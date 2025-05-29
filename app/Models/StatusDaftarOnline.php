@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class StatusDaftarOnline extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'noreg_ppdb',
+        'statusBiodata',
+        'statusDataOrangTua',
+        'statusDataPeriodik',
+        'statusKesejahteraan',
+        'statusDokumenPendaftaran',
+        'statusFinalisasi'
+    ];
 }
