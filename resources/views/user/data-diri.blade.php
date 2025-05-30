@@ -66,10 +66,6 @@
                                     <input type="text" class="form-control" name="nik" id="nik" placeholder="Nomor Induk Kependudukan (NIK)" value="{{ $biodata['nik'] ?: '' }}" {{ $biodata['nik'] ? 'disabled' : '' }}>
                                 </div>
                                 <div class="form-group">
-                                    <label for="nisn">Nomor Induk Siswa Nasional (NISN)</label>
-                                    <input type="text" class="form-control" name="nisn" id="nisn" placeholder="Nomor Induk Siswa Nasional (NISN)" value="{{ $biodata['nisn'] ?: '' }}" {{ $biodata['nisn'] ? 'disabled' : '' }}>
-                                </div>
-                                <div class="form-group">
                                     <label for="jenis-kelamin">Jenis Kelamin</label>
                                     <select class="form-control" name="jenis_kelamin" id="jenis-kelamin" {{ $biodata['jenis_kelamin'] ? 'disabled' : '' }}>
                                         <option>Pilih :</option>
@@ -90,36 +86,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="asal-sekolah">Asal Sekolah</label>
-                                    <input type="text" class="form-control" name="asal_sekolah" id="asal-sekolah" placeholder="Asal Sekolah" value="{{ $biodata['asal_sekolah'] ?: '' }}" {{ $biodata['asal_sekolah'] ? 'disabled' : '' }}>
-                                </div>
-                                <div class="form-group">
-                                    <label for="tahun-lulus">Tahun Lulus</label>
-                                    <select class="form-control" name="tahun_lulus" id="tahun-lulus" value="{{ $biodata['tahun_lulus'] ?: '' }}" {{ $biodata['tahun_lulus'] ? 'disabled' : '' }}>
-                                        <option>Pilih :</option>
-                                        <option value="2025" {{ $biodata['tahun_lulus'] == '2025' ? 'selected' : '' }}>2025</option>
-                                        <option value="2024" {{ $biodata['tahun_lulus'] == '2024' ? 'selected' : '' }}>2024</option>
-                                        <option value="2023" {{ $biodata['tahun_lulus'] == '2023' ? 'selected' : '' }}>2023</option>
-                                        <option value="2022" {{ $biodata['tahun_lulus'] == '2022' ? 'selected' : '' }}>2022</option>
-                                        <option value="99" {{ $biodata['tahun_lulus'] == '99' ? 'selected' : '' }}>Lainnya</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="kelas">Kelas</label>
-                                    <input type="text" class="form-control" name="kelas" id="kelas" placeholder="Kelas" value="{{ $biodata['kelas'] ?: '' }}" {{ $biodata['kelas'] ? 'disabled' : '' }}>
-                                </div>
                             </div>
                             <div class="col-12 col-lg-6">
-                                <div class="form-group">
-                                    <label for="gelombang">Gelombang Pendaftaran</label>
-                                    <select class="form-control" name="gelombang" id="gelombang" {{ $biodata['gelombang'] ? 'disabled' : '' }}>
-                                        <option>Pilih :</option>
-                                        <option value="1" {{ $biodata['gelombang'] == '1' ? 'selected' : '' }}>1 (Satu)</option>
-                                        <option value="2" {{ $biodata['gelombang'] == '2' ? 'selected' : '' }}>2 (Dua)</option>
-                                        <option value="3" {{ $biodata['gelombang'] == '3' ? 'selected' : '' }}>3 (Tiga)</option>
-                                    </select>
-                                </div>
                                 <div class="form-group">
                                     <label for="alamat">Alamat</label>
                                     <textarea name="alamat" id="alamat" placeholder="Alamat" class="form-control" cols="30" rows="5" {{ $biodata['alamat'] ? 'disabled' : '' }}>{{ $biodata['alamat'] ?: '' }}</textarea>
@@ -200,10 +168,6 @@
                                     <input type="text" class="form-control" name="nik" id="nik" placeholder="Nomor Induk Kependudukan (NIK)">
                                 </div>
                                 <div class="form-group">
-                                    <label for="nisn">Nomor Induk Siswa Nasional (NISN)</label>
-                                    <input type="text" class="form-control" name="nisn" id="nisn" placeholder="Nomor Induk Siswa Nasional (NISN)">
-                                </div>
-                                <div class="form-group">
                                     <label for="jenis-kelamin">Jenis Kelamin</label>
                                     <select class="form-control" name="jenis_kelamin" id="jenis-kelamin">
                                         <option>Pilih :</option>
@@ -224,35 +188,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="asal-sekolah">Asal Sekolah</label>
-                                    <input type="text" class="form-control" name="asal_sekolah" id="asal-sekolah" placeholder="Asal Sekolah">
-                                </div>
-                                <div class="form-group">
-                                    <label for="tahun-lulus">Tahun Lulus</label>
-                                    <select class="form-control" name="tahun_lulus" id="tahun-lulus">
-                                        <option>Pilih :</option>
-                                        <option value="2025">2025</option>
-                                        <option value="2024">2024</option>
-                                        <option value="2023">2023</option>
-                                        <option value="99">Lainnya</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="kelas">Kelas</label>
-                                    <input type="text" class="form-control" name="kelas" id="kelas" placeholder="Kelas">
-                                </div>
                             </div>
                             <div class="col-12 col-lg-6">
-                                <div class="form-group">
-                                    <label for="gelombang">Gelombang Pendaftaran</label>
-                                    <select class="form-control" name="gelombang" id="gelombang">
-                                        <option>Pilih :</option>
-                                        <option value="1">1 (Satu)</option>
-                                        <option value="2">2 (Dua)</option>
-                                        <option value="3">3 (Tiga)</option>
-                                    </select>
-                                </div>
                                 <div class="form-group">
                                     <label for="alamat">Alamat</label>
                                     <textarea name="alamat" id="alamat" placeholder="Alamat" class="form-control" cols="30" rows="5"></textarea>
