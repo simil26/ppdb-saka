@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Models\DataOrangTua;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\StatusDaftarOnline;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
@@ -19,7 +20,7 @@ class DataOrangTuaController extends Controller
         }
 
         $dataOrangTua = [];
-        if (Session::has('dataOrangTua_status')) {
+        if (StatusDaftarOnline::where('noreg_ppdb', Session::get('noreg_ppdb'))->first()->statusDataOrangTua == '1') {
             $dataOrangTua = DataOrangTua::where('noreg_ppdb', Session::get('noreg_ppdb'))->first();
         }
 
@@ -82,15 +83,16 @@ class DataOrangTuaController extends Controller
         ];
         $dataOrangTua = $request->validate($rules, $errorMessages);
         if ($dataOrangTua) {
-            return redirect('user/data-orang-tua')->withErrors($errorMessages);
-        } else {
             try {
-                $result = DataOrangTua::create($dataOrangTua);
-                Session::put('dataOrangTua_status', 'done');
+                DataOrangTua::create($dataOrangTua);
+                StatusDaftarOnline::where('noreg_ppdb', $dataOrangTua['noreg_ppdb'])
+                    ->update(['statusDataOrangTua' => "1"]);
                 return redirect('user/data-orang-tua')->with('success', 'Data Orang Tua berhasil disimpan!');
             } catch (\Exception $e) {
                 return redirect('user/data-orang-tua')->with('error', 'Data Orang Tua gagal disimpan!');
             }
+        } else {
+            return redirect('user/data-orang-tua')->withErrors($errorMessages);
         }
     }
     public function update(Request $request)
