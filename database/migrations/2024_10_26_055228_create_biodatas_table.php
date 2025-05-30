@@ -14,16 +14,11 @@ return new class extends Migration
         Schema::create('biodatas', function (Blueprint $table) {
             $table->id();
             $table->string('noreg_ppdb', 20)->unique();
-            $table->enum('gelombang', [1, 2, 3]);
-            $table->string('nisn', 11)->nullable();
             $table->string('nik', 16);
             $table->string('nama', 255);
             $table->string('jenis_kelamin');
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
-            $table->string('asal_sekolah')->nullable();
-            $table->string('tahun_lulus')->nullable();
-            $table->string('kelas')->nullable();
             $table->string('alamat');
             $table->string('dusun');
             $table->string('rt', 3);
