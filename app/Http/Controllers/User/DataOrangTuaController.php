@@ -6,6 +6,7 @@ use App\Models\DataOrangTua;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class DataOrangTuaController extends Controller
 {
@@ -79,14 +80,17 @@ class DataOrangTuaController extends Controller
             'alamat_ibu.min' => 'Alamat Ibu minimal 3 karakter!',
             'alamat_ibu.max' => 'Alamat Ibu maksimal 191 karakter!',
         ];
-
-        $dataOrantTua = $request->validate($rules, $errorMessages);
-        try {
-            $result = DataOrangTua::create($dataOrantTua);
-            Session::put('dataOrangTua_status', 'done');
-            return redirect('user/data-orang-tua')->with('success', 'Data Orang Tua berhasil disimpan!');
-        } catch (\Exception $e) {
-            return redirect('user/data-orang-tua')->with('error', 'Data Orang Tua gagal disimpan!');
+        $dataOrangTua = $request->validate($rules, $errorMessages);
+        if ($dataOrangTua) {
+            return redirect('user/data-orang-tua')->withErrors($errorMessages);
+        } else {
+            try {
+                $result = DataOrangTua::create($dataOrangTua);
+                Session::put('dataOrangTua_status', 'done');
+                return redirect('user/data-orang-tua')->with('success', 'Data Orang Tua berhasil disimpan!');
+            } catch (\Exception $e) {
+                return redirect('user/data-orang-tua')->with('error', 'Data Orang Tua gagal disimpan!');
+            }
         }
     }
     public function update(Request $request)
@@ -139,9 +143,9 @@ class DataOrangTuaController extends Controller
             'alamat_ibu.max' => 'Alamat Ibu maksimal 191 karakter!',
         ];
 
-        $dataOrantTua = $request->validate($rules, $errorMessages);
+        $dataOrangTua = $request->validate($rules, $errorMessages);
         try {
-            $result = DataOrangTua::where('noreg_ppdb', $dataOrantTua['noreg_ppdb'])->update($dataOrantTua);
+            $result = DataOrangTua::where('noreg_ppdb', $dataOrangTua['noreg_ppdb'])->update($dataOrangTua);
             return redirect('user/data-orang-tua')->with('success', 'Data Orang Tua berhasil disimpan!');
         } catch (\Exception $e) {
             return redirect('user/data-orang-tua')->with('error', 'Data Orang Tua gagal disimpan!');
