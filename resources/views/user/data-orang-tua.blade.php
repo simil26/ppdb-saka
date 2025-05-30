@@ -217,11 +217,17 @@
                             <div class="col-12 col-lg-6">
                                 <div class="form-group">
                                     <label for="nama_ayah">Nama Ayah</label>
-                                    <input type="text" class="form-control" name="nama_ayah" id="nama_ayah" placeholder="Nama Lengkap Ayah">
+                                    <input type="text" class="form-control {{ $errors->any() ? 'border-2 border-danger' : '' }}" name="nama_ayah" id="nama_ayah" placeholder="Nama Lengkap Ayah">
+                                    @error('nama_ayah')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="tempat_lahir_ayah">Tempat Lahir Ayah</label>
                                     <input type="text" class="form-control" name="tempat_lahir_ayah" id="tempat_lahir_ayah" placeholder="Tempat Lahir Ayah">
+                                    @error('tempat_lahir_ayah')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="tanggalLahirAyah">Tanggal Lahir</label>
@@ -231,6 +237,9 @@
                                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                         </div>
                                     </div>
+                                    @error('tanggal_lahir_ayah')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="pendidikan_ayah">Pendidikan Ayah</label>
@@ -247,6 +256,9 @@
                                         <option value="9">S2</option>
                                         <option value="10">S3</option>
                                     </select>
+                                    @error('pendidikan_ayah')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="pekerjaan_ayah">Pekerjaan Ayah</label>
@@ -267,6 +279,9 @@
                                         <option value="13">Pengusaha</option>
                                         <option value="99">Lainnya</option>
                                     </select>
+                                    @error('pekerjaan_ayah')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="penghasilan_ayah">Penghasilan Ayah</label>
@@ -280,9 +295,15 @@
                                         <option value="6">Rp. 10.000.000 - Rp. 20.000.000</option>
                                         <option value="7">Lebih dari Rp. 20.000.000</option>
                                     </select>
+                                    @error('penghasilan_ayah')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="alamat_ayah">Alamat Ayah</label>
+                                    @error('alamat_ayah')
+                                        <br><span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                     <textarea name="alamat_ayah" id="alamat_ayah" name="alamat_ayah" cols="30" rows="5" class="form-control"></textarea>
                                 </div>
                             </div>
