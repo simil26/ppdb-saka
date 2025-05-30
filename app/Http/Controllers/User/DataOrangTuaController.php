@@ -13,14 +13,15 @@ class DataOrangTuaController extends Controller
 {
     public function index()
     {
+        $statusDaftarOnline = StatusDaftarOnline::where('noreg_ppdb', Session::get('noreg_ppdb'))->first();
         if (!session()->has('noreg_ppdb')) {
             return redirect()->route('login');
-        } else if (!session()->has('biodata_status')) {
+        } else if ($statusDaftarOnline->statusBiodata != '1') {
             return redirect()->route('user.dataDiri')->with('warning', 'Silahkan lengkapi data diri terlebih dahulu!');
         }
 
         $dataOrangTua = [];
-        if (StatusDaftarOnline::where('noreg_ppdb', Session::get('noreg_ppdb'))->first()->statusDataOrangTua == '1') {
+        if ($statusDaftarOnline->statusDataOrangTua == '1') {
             $dataOrangTua = DataOrangTua::where('noreg_ppdb', Session::get('noreg_ppdb'))->first();
         }
 
