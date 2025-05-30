@@ -152,7 +152,7 @@ class DataDiriController extends Controller
 
         $biodata = $request->validate($rules, $errorMessages);
         try {
-            $result = Biodata::where('noreg_ppdb', $biodata['noreg_ppdb'])->update($biodata);
+            Biodata::where('noreg_ppdb', $biodata['noreg_ppdb'])->update($biodata);
 
             return redirect()->to('user/data-diri')->with('success', 'Data berhasil diperbaharui');
         } catch (\Exception $e) {
