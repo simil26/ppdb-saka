@@ -34,16 +34,11 @@ class DataDiriController extends Controller
     {
 
         $rules = [
-            'gelombang' => 'required',
-            'nisn' => 'required',
             'nik' => 'required',
             'nama' => 'required|min:3|max:197',
             'jenis_kelamin' => 'required',
             'tempat_lahir' => 'required|min:3|max:197',
             'tanggal_lahir' => 'required',
-            'asal_sekolah' => 'required|min:3|max:197',
-            'tahun_lulus' => 'required|min:4|max:4',
-            'kelas' => 'required',
             'alamat' => 'required|min:3|max:197',
             'dusun' => 'required|min:3|max:197',
             'rt' => 'required',
@@ -55,8 +50,6 @@ class DataDiriController extends Controller
             'kode_pos' => 'required|min:5|max:5',
         ];
         $errorMessages = [
-            'gelombang.required' => 'Gelombang harus diisi',
-            'nisn.required' => 'NISN harus diisi',
             'nik.required' => 'NIK harus diisi',
             'nama.required' => 'Nama harus diisi',
             'nama.min' => 'Nama minimal 3 karakter',
@@ -66,13 +59,6 @@ class DataDiriController extends Controller
             'tempat_lahir.min' => 'Tempat Lahir minimal 3 karakter',
             'tempat_lahir.max' => 'Tempat Lahir maksimal 197 karakter',
             'tanggal_lahir.required' => 'Tanggal Lahir harus diisi',
-            'asal_sekolah.required' => 'Asal Sekolah harus diisi',
-            'asal_sekolah.min' => 'Asal Sekolah minimal 3 karakter',
-            'asal_sekolah.max' => 'Asal Sekolah maksimal 197 karakter',
-            'tahun_lulus.required' => 'Tahun Lulus harus diisi',
-            'tahun_lulus.min' => 'Tahun Lulus minimal 4 karakter',
-            'tahun_lulus.max' => 'Tahun Lulus maksimal 4 karakter',
-            'kelas.required' => 'Kelas harus diisi',
             'alamat.required' => 'Alamat harus diisi',
             'alamat.min' => 'Alamat minimal 3 karakter',
             'alamat.max' => 'Alamat maksimal 197 karakter',
@@ -100,19 +86,12 @@ class DataDiriController extends Controller
 
         $biodata = $request->validate($rules, $errorMessages);
         $biodata['noreg_ppdb'] = Session::get('noreg_ppdb');
-        if (session()->has('biodata_status')) {
-            $noreg_ppdb = Session::get('noreg_ppdb');
-            $biodata['noreg_ppdb'] = $noreg_ppdb;
-            Biodata::where('noreg', $noreg_ppdb)->update($biodata);
-        } else {
-            try {
-                $biodata['noreg_ppdb'] = Session::get('noreg_ppdb');
-                Biodata::create($biodata);
-                Session::put('biodata_status', 'done');
-                return redirect()->to('user/data-diri')->with('success', 'Data berhasil disimpan');
-            } catch (\Exception $e) {
-                return redirect()->to('user/data-diri')->with('error', 'Data gagal disimpan');
-            }
+        try {
+            Biodata::create($biodata);
+            StatusDaftarOnline::where('noreg_ppdb', Session::get('noreg_ppdb'))->update(['statusBiodata' => '1']);
+            return redirect()->to('user/data-diri')->with('success', 'Data berhasil disimpan');
+        } catch (\Exception $e) {
+            return redirect()->to('user/data-diri')->with('error', 'Data gagal disimpan');
         }
     }
     public function update(Request $request)
@@ -120,16 +99,11 @@ class DataDiriController extends Controller
 
         $rules = [
             'noreg_ppdb' => 'required',
-            'gelombang' => 'required',
-            'nisn' => 'required',
             'nik' => 'required',
             'nama' => 'required|min:3|max:197',
             'jenis_kelamin' => 'required',
             'tempat_lahir' => 'required|min:3|max:197',
             'tanggal_lahir' => 'required',
-            'asal_sekolah' => 'required|min:3|max:197',
-            'tahun_lulus' => 'required|min:4|max:4',
-            'kelas' => 'required',
             'alamat' => 'required|min:3|max:197',
             'dusun' => 'required|min:3|max:197',
             'rt' => 'required',
@@ -142,8 +116,6 @@ class DataDiriController extends Controller
         ];
         $errorMessages = [
             'noreg_ppdb.required' => 'Nomor Registrasi tidak valid, silahkan hubungi admin',
-            'gelombang.required' => 'Gelombang harus diisi',
-            'nisn.required' => 'NISN harus diisi',
             'nik.required' => 'NIK harus diisi',
             'nama.required' => 'Nama harus diisi',
             'nama.min' => 'Nama minimal 3 karakter',
@@ -153,13 +125,6 @@ class DataDiriController extends Controller
             'tempat_lahir.min' => 'Tempat Lahir minimal 3 karakter',
             'tempat_lahir.max' => 'Tempat Lahir maksimal 197 karakter',
             'tanggal_lahir.required' => 'Tanggal Lahir harus diisi',
-            'asal_sekolah.required' => 'Asal Sekolah harus diisi',
-            'asal_sekolah.min' => 'Asal Sekolah minimal 3 karakter',
-            'asal_sekolah.max' => 'Asal Sekolah maksimal 197 karakter',
-            'tahun_lulus.required' => 'Tahun Lulus harus diisi',
-            'tahun_lulus.min' => 'Tahun Lulus minimal 4 karakter',
-            'tahun_lulus.max' => 'Tahun Lulus maksimal 4 karakter',
-            'kelas.required' => 'Kelas harus diisi',
             'alamat.required' => 'Alamat harus diisi',
             'alamat.min' => 'Alamat minimal 3 karakter',
             'alamat.max' => 'Alamat maksimal 197 karakter',
