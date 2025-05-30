@@ -6,21 +6,23 @@ use App\Models\DataPeriodik;
 use Illuminate\Http\Request;
 use App\Models\DataKesejahteraan;
 use App\Http\Controllers\Controller;
+use App\Models\StatusDaftarOnline;
 use Illuminate\Support\Facades\Session;
 
 class DataPeriodikController extends Controller
 {
     public function index()
     {
+        $statusDaftarOnline = StatusDaftarOnline::where('noreg_ppdb', session('noreg_ppdb'))->first();
         if (!session()->has('noreg_ppdb')) {
             return redirect()->route('login');
-        } else if (!session()->has('dataOrangTua_status')) {
+        } else if ($statusDaftarOnline->statusDataOrangTua == '0') {
             return redirect()->route('user.dataOrangTua')->with('warning', 'Silahkan lengkapi data orang tua terlebih dahulu');
         }
 
         $dataPeriodik = [];
         $dataKesejahteraan = [];
-        if (Session::has('dataPeriodik_status')) {
+        if ($statusDaftarOnline->statusDataPeriodik == '1' && $statusDaftarOnline->statusKesejahteraan == '1') {
             $dataPeriodik = DataPeriodik::where('noreg_ppdb', session('noreg_ppdb'))->first();
             $dataKesejahteraan = DataKesejahteraan::where('noreg_ppdb', session('noreg_ppdb'))->first();
         }
