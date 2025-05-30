@@ -92,7 +92,7 @@
                                             </div>
                                             <!-- END timeline item --><!-- timeline item -->
                                             <div>
-                                                <i class="fas {{ $statusDaftarOnline['statusDataOrangTua'] == '1' ? 'fa-check bg-green' : ($statusDaftarOnline['statusBiodata'] == '1' || $statusDaftarOnline['statusDataOrangTua'] == '0' ? 'fa-exclamation bg-yellow' : 'fa-clock bg-gray') }}"></i>
+                                                <i class="fas {{ $statusDaftarOnline['statusDataOrangTua'] == '1' ? 'fa-check bg-green' : ($statusDaftarOnline['statusBiodata'] == '1' && $statusDaftarOnline['statusDataOrangTua'] == '0' ? 'fa-exclamation bg-yellow' : 'fa-clock bg-gray') }}"></i>
                                                 <div class="timeline-item">
                                                     <h3 class="timeline-header text-blue font-weight-bold">Data Orang Tua</h3>
 
@@ -109,7 +109,8 @@
                                             </div>
                                             <!-- END timeline item --><!-- timeline item -->
                                             <div>
-                                                <i class="fas {{ $statusDaftarOnline['statusDataPeriodik'] == '1' && $statusDaftarOnline['statusKesejahteraan'] == '1' ? 'fa-check bg-green' : ($statusDaftarOnline['statusDataPeriodik'] == '0' && $statusDaftarOnline['statusKesejahteraan'] == '0' ? 'fa-exclamation bg-yellow' : 'fa-clock bg-gray') }}"></i>
+                                                <i
+                                                    class="fas {{ $statusDaftarOnline['statusDataPeriodik'] == '1' && $statusDaftarOnline['statusKesejahteraan'] == '1' ? 'fa-check bg-green' : ($statusDaftarOnline['statusDataOrangTua'] == '1' && $statusDaftarOnline['statusDataPeriodik'] == '0' && $statusDaftarOnline['statusKesejahteraan'] == 0 ? 'fa-exclamation bg-yellow' : ($statusDaftarOnline['statusDataPeriodik'] == '1' && $statusDaftarOnline['statusKesejahteraan'] == '0' ? 'fa-exclamation bg-yellow' : ($statusDaftarOnline['statusDataPeriodik'] == '0' && $statusDaftarOnline['statusKesejahteraan'] == '1' ? 'fa-exclamation bg-yellow' : 'fa-clock bg-gray'))) }}"></i>
                                                 <div class="timeline-item">
                                                     <h3 class="timeline-header text-blue font-weight-bold">Data Periodik dan Kesejahteraan</h3>
 
