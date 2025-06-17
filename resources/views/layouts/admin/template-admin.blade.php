@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="{{ url('assets/adminlte') }}/plugins/summernote/summernote-bs4.min.css">
     @if ($usingDatatables)
         <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.bootstrap5.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.17.1/sweetalert2.min.css" integrity="sha512-a0Q2jy1nb+NoFvKtIK5sj5okVL58JWpqX8+WaFffaPXORz95Spz/90M/aZrdGQ3BzCY3u8FiMuFTFKT5ybm8mw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     @endif
 </head>
 
