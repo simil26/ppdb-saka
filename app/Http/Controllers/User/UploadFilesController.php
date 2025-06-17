@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\DataKesejahteraan;
+use App\Models\DataPeriodik;
 use App\Models\DokumenPendaftaran;
 use Illuminate\Http\Request;
 
@@ -13,9 +15,12 @@ class UploadFilesController extends Controller
         if (!session()->has('noreg_ppdb')) {
             return redirect()->route('login');
         }
+        $statusActiveFieldKesejahteraan = DataKesejahteraan::where('noreg_ppdb', session('noreg_ppdb'))->first();
+
         $data = [
             'title' => 'Unggah Dokumen',
             'active' => 'upload-files',
+            'statusActiveFieldKesejahteraan' => $statusActiveFieldKesejahteraan,
         ];
 
         return view('user.upload-files', $data);
@@ -23,8 +28,7 @@ class UploadFilesController extends Controller
 
     public function store(Request $request)
     {
-        $userID = auth()->user()->id;
-        $noregPPDB = $request->input('noreg_ppdb');
+        $noregPPDB = session('noreg_ppdb');
 
         $files = [
             'ijazah' => $request->file('ijazah') ? $request->file('ijazah') : '-',
@@ -40,7 +44,6 @@ class UploadFilesController extends Controller
 
         $dokumenPPDB = [
             'noreg_ppdb' => $noregPPDB,
-            'user_id' => $userID,
             'ijazah' => '-',
             'kk' => '-',
             'akte' => '-',
@@ -73,8 +76,8 @@ class UploadFilesController extends Controller
 
     public function showDokumen()
     {
-        $userID = auth()->user()->id;
-        $dokumenPPDB = DokumenPendaftaran::where('user_id', $userID)->first();
+        $noregPPDB = session('noreg_ppdb');
+        $dokumenPPDB = DokumenPendaftaran::where('noreg_ppdb', $noregPPDB)->first();
         $data = [
             'title' => 'Dokumen Pendaftaran',
             'active' => 'dokumen-pendaftaran',
