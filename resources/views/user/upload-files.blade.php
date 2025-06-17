@@ -87,7 +87,7 @@
                             </div>
                         </div>
                         <div class="col-12 col-lg-6">
-                            <div class="form-group">
+                            <div class="form-group  {{ $statusActiveFieldKesejahteraan->is_kip != '1' ? 'd-none' : '' }}">
                                 <label for="kip">File KIP</label>
                                 <div class="input-group">
                                     <div class="custom-file">
@@ -96,7 +96,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group  {{ $statusActiveFieldKesejahteraan->is_kis != '1' ? 'd-none' : '' }}">
                                 <label for="kis">File KIS</label>
                                 <div class="input-group">
                                     <div class="custom-file">
@@ -105,7 +105,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group {{ $statusActiveFieldKesejahteraan->is_kks != '1' ? 'd-none' : '' }}">
                                 <label for="kks">File KKS</label>
                                 <div class="input-group">
                                     <div class="custom-file">
@@ -114,7 +114,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group {{ $statusActiveFieldKesejahteraan->is_kps != '1' ? 'd-none' : '' }}">
                                 <label for="kps">File KPS</label>
                                 <div class="input-group">
                                     <div class="custom-file">
@@ -123,7 +123,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group {{ $statusActiveFieldKesejahteraan->is_pkh != '1' ? 'd-none' : '' }}">
                                 <label for="pkh">File PKH</label>
                                 <div class="input-group">
                                     <div class="custom-file">
