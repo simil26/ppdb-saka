@@ -113,68 +113,29 @@
 @endsection
 
 @push('scripts')
-    <div class="modal fade" id="verifikasi-modal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Verfikasi Pendaftar</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>
-                        Apakah anda yakin ingin memlakukan verifikasi terhadap pendaftar dengan data berikut?
-                    </p>
-                    <p>
-                    <table>
-                        <tr>
-                            <td>Nomor Pendaftaran</td>
-                            <td id="noreg_modal"></td>
-                        </tr>
-                        <tr>
-                            <td>Nama Pendaftar</td>
-                            <td id="nama_modal"></td>
-                        </tr>
-                        <tr>
-                            <td>Asal Sekolah</td>
-                            <td id="asal_sekolah_modal"></td>
-                        </tr>
-                    </table>
-                    </p>
-                </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Tidak</button>
-                    <a href="#" id="verifikasi_link" type="button" class="btn btn-primary">Ya, verifikasi!</a>
-                </div>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
+    <script script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.17.1/sweetalert2.min.js" integrity="sha512-3E8s4JBQ3DzbrQQuVMF70TaihBTov6TlT1O9wjfrFiykjj5k5oN988+CPtzVgYJBHzdRojLLGKWxgsOeLF5X2Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         $('#table-data-pendaftar').DataTable();
-        // document.querySelectorAll('#verifikasi').forEach((element, index) => {
-        //     element.addEventListener('click', () => {
-        //         const noreg = document.querySelectorAll('#table-data-pendaftar tr td')[index * 7].innerText;
-        //         const nama = document.querySelectorAll('#table-data-pendaftar tr td')[index * 7 + 1].innerText;
-        //         const asal_sekolah = document.querySelectorAll('#table-data-pendaftar tr td')[index * 7 + 4].innerText;
-        //         document.querySelector('#noreg_modal').innerText = `: ${noreg}`;
-        //         document.querySelector('#nama_modal').innerText = `: ${nama}`;
-        //         document.querySelector('#asal_sekolah_modal').innerText = `: ${asal_sekolah}`;
-        //         document.querySelector('#verifikasi_link').href = `{{ url('admin/verifikasi-pendaftar/') }}/${noreg}`;
-        //     });
-        // });
 
         //buatkan fungsi menggunakan jquery untuk setiap tombol verifikasi yang ada pada tabel berdasarkan kode yang saya beri komentar diatas
         $('#table-data-pendaftar').on('click', '#verifikasi', function() {
-            const noreg = $(this).closest('tr').find('td:eq(0)').text().trim();
-            const nama = $(this).closest('tr').find('td:eq(1)').text();
-            const asal_sekolah = $(this).closest('tr').find('td:eq(4)').text();
-            $('#noreg_modal').text(`: ${noreg}`);
-            $('#nama_modal').text(`: ${nama}`);
-            $('#asal_sekolah_modal').text(`: ${asal_sekolah}`);
-            $('#verifikasi_link').attr('href', `{{ url('admin/verifikasi-pendaftar/') }}/${noreg}`);
+            var row = $(this).closest('tr');
+            var noPendaftaran = row.find('td:eq(0)').text();
+            var nama = row.find('td:eq(1)').text();
+
+            Swal.fire({
+                title: 'Verifikasi Pendaftar',
+                text: 'Apakah anda yakin ingin memverifikasi pendaftar ' + nama + ' dengan nomor pendaftaran ' + noPendaftaran + '?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Ya, verifikasi!',
+                cancelButtonText: 'Tidak, batalkan'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Redirect ke halaman verifikasi
+                    window.location.href = "{{ url('admin/verifikasi-pendaftar') }}/" + noPendaftaran;
+                }
+            });
         });
     </script>
 @endpush
