@@ -34,6 +34,8 @@ class DataPeriodikController extends Controller
             'dataKesejahteraan' => $dataKesejahteraan
         ];
 
+        // dd($data);
+
         return view('user.data-periodik', $data);
     }
 
@@ -77,15 +79,13 @@ class DataPeriodikController extends Controller
         $dataKesejahteraan['nomor_kps'] = $request->input('nomor_kps') ?? '-';
         $dataKesejahteraan['nomor_pkh'] = $request->input('nomor_pkh') ?? '-';
 
-        // dd([
-        //     'dataPeriodik' => $dataPeriodik,
-        //     'dataKesejahteraan' => $dataKesejahteraan
-        // ]);
         try {
             $resutlPeriodik = DataPeriodik::create($dataPeriodik);
             $resultKesejahteraan = DataKesejahteraan::create($dataKesejahteraan);
-            Session::put('dataPeriodik_status', 'done');
-            Session::put('dataKesejahteraan_status', 'done');
+            StatusDaftarOnline::where('noreg_ppdb', $dataPeriodik['noreg_ppdb'])
+                ->update(['statusDataPeriodik' => "1"]);
+            StatusDaftarOnline::where('noreg_ppdb', $dataKesejahteraan['noreg_ppdb'])
+                ->update(['statusKesejahteraan' => "1"]);
             return redirect()->back()->with('success', 'Data periodik berhasil disimpan');
         } catch (\Exception $e) {
             return redirect()->back()->withInput()->with('error', $e->getMessage());
