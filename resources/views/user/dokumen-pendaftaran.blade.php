@@ -48,7 +48,7 @@
                     <div class="col-3">
                         <div class="card">
                             <div class="card-title pt-3 py-2">
-                                <h5 class="text-center">{{ strtoupper(substr($dokumenPPDB->ijazah, 15, 6)) }}</h5>
+                                <h5 class="text-center">{{ strtoupper(substr($dokumenPPDB->ijazah, 18, 6)) }}</h5>
                             </div>
                             <div class="card-body">
                                 <img src="{{ url('assets/files/' . session('noreg_ppdb') . '/' . $dokumenPPDB->ijazah) }}" alt="File Ijazah" id="ijazah" style="width: 100%">
@@ -58,7 +58,7 @@
                     <div class="col-3">
                         <div class="card">
                             <div class="card-title pt-3 py-2">
-                                <h5 class="text-center">{{ strtoupper(substr($dokumenPPDB->kk, 15, 2)) }}</h5>
+                                <h5 class="text-center">{{ strtoupper(substr($dokumenPPDB->kk, 18, 2)) }}</h5>
                             </div>
                             <div class="card-body">
                                 <img src="{{ url('assets/files/' . session('noreg_ppdb') . '/' . $dokumenPPDB->kk) }}" alt="File kk" id="kk" style="width: 100%">
@@ -68,7 +68,7 @@
                     <div class="col-3">
                         <div class="card">
                             <div class="card-title pt-3 py-2">
-                                <h5 class="text-center">{{ strtoupper(substr($dokumenPPDB->akte, 15, 4) . ' KELAHIRAN') }}</h5>
+                                <h5 class="text-center">{{ strtoupper(substr($dokumenPPDB->akte, 18, 4) . ' KELAHIRAN') }}</h5>
                             </div>
                             <div class="card-body">
                                 <img src="{{ url('assets/files/' . session('noreg_ppdb') . '/' . $dokumenPPDB->akte) }}" alt="File akte" id="akte" style="width: 100%">
@@ -78,7 +78,7 @@
                     <div class="col-3">
                         <div class="card">
                             <div class="card-title pt-3 py-2">
-                                <h5 class="text-center">{{ strtoupper(substr($dokumenPPDB->ktp, 15, 3) . ' Orang Tua') }}</h5>
+                                <h5 class="text-center">{{ strtoupper(substr($dokumenPPDB->ktp, 18, 3) . ' Orang Tua') }}</h5>
                             </div>
                             <div class="card-body">
                                 <img src="{{ url('assets/files/' . session('noreg_ppdb') . '/' . $dokumenPPDB->ktp) }}" alt="File ktp" id="ktp" style="width: 100%">
@@ -91,7 +91,7 @@
                         <div class="col-3">
                             <div class="card">
                                 <div class="card-title pt-3 py-2">
-                                    <h5 class="text-center">{{ strtoupper(substr($dokumenPPDB->kip, 15, 3)) }}</h5>
+                                    <h5 class="text-center">{{ strtoupper(substr($dokumenPPDB->kip, 18, 3)) }}</h5>
                                 </div>
                                 <div class="card-body">
                                     <img src="{{ url('assets/files/' . session('noreg_ppdb') . '/' . $dokumenPPDB->kip) }}" alt="File kip" id="kip" style="width: 100%">
@@ -103,7 +103,7 @@
                         <div class="col-3">
                             <div class="card">
                                 <div class="card-title pt-3 py-2">
-                                    <h5 class="text-center">{{ strtoupper(substr($dokumenPPDB->kis, 15, 3)) }}</h5>
+                                    <h5 class="text-center">{{ strtoupper(substr($dokumenPPDB->kis, 18, 3)) }}</h5>
                                 </div>
                                 <div class="card-body">
                                     <img src="{{ url('assets/files/' . session('noreg_ppdb') . '/' . $dokumenPPDB->kis) }}" alt="File kis" id="kis" style="width: 100%">
@@ -115,7 +115,7 @@
                         <div class="col-3">
                             <div class="card">
                                 <div class="card-title pt-3 py-2">
-                                    <h5 class="text-center">{{ strtoupper(substr($dokumenPPDB->kks, 15, 3)) }}</h5>
+                                    <h5 class="text-center">{{ strtoupper(substr($dokumenPPDB->kks, 18, 3)) }}</h5>
                                 </div>
                                 <div class="card-body">
                                     <img src="{{ url('assets/files/' . session('noreg_ppdb') . '/' . $dokumenPPDB->kks) }}" alt="File kks" id="kks" style="width: 100%">
@@ -123,11 +123,11 @@
                             </div>
                         </div>
                     @endif
-                    @if ($dokumenPPDB->kks != '-')
+                    @if ($dokumenPPDB->kps != '-')
                         <div class="col-3">
                             <div class="card">
                                 <div class="card-title pt-3 py-2">
-                                    <h5 class="text-center">{{ strtoupper(substr($dokumenPPDB->kps, 15, 3)) }}</h5>
+                                    <h5 class="text-center">{{ strtoupper(substr($dokumenPPDB->kps, 18, 3)) }}</h5>
                                 </div>
                                 <div class="card-body">
                                     <img src="{{ url('assets/files/' . session('noreg_ppdb') . '/' . $dokumenPPDB->kps) }}" alt="File kps" id="kps" style="width: 100%">
@@ -141,7 +141,7 @@
                         <div class="col-3">
                             <div class="card">
                                 <div class="card-title pt-3 py-2">
-                                    <h5 class="text-center">{{ strtoupper(substr($dokumenPPDB->pkh, 15, 3)) }}</h5>
+                                    <h5 class="text-center">{{ strtoupper(substr($dokumenPPDB->pkh, 18, 3)) }}</h5>
                                 </div>
                                 <div class="card-body">
                                     <img src="{{ url('assets/files/' . session('noreg_ppdb') . '/' . $dokumenPPDB->pkh) }}" alt="File pkh" id="pkh" style="width: 100%">
