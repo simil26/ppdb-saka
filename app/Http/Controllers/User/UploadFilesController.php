@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\DataKesejahteraan;
 use App\Models\DataPeriodik;
 use App\Models\DokumenPendaftaran;
+use App\Models\StatusDaftarOnline;
 use Illuminate\Http\Request;
 
 class UploadFilesController extends Controller
@@ -16,11 +17,13 @@ class UploadFilesController extends Controller
             return redirect()->route('login');
         }
         $statusActiveFieldKesejahteraan = DataKesejahteraan::where('noreg_ppdb', session('noreg_ppdb'))->first();
+        $statusDaftarOnline = StatusDaftarOnline::where('noreg_ppdb', session('noreg_ppdb'))->first();
 
         $data = [
             'title' => 'Unggah Dokumen',
             'active' => 'upload-files',
             'statusActiveFieldKesejahteraan' => $statusActiveFieldKesejahteraan,
+            'statusDaftarOnline' => $statusDaftarOnline,
         ];
 
         return view('user.upload-files', $data);
@@ -67,7 +70,8 @@ class UploadFilesController extends Controller
         $uploadAttempt = DokumenPendaftaran::create($dokumenPPDB);
 
         if ($uploadAttempt) {
-            session()->put('uploadFiles', 'success');
+            StatusDaftarOnline::where('noreg_ppdb', $noregPPDB)
+                ->update(['statusDokumenPendaftaran' => '1']);
             return redirect()->route('user.uploadFiles.selesai')->with('success', 'Dokumen berhasil diunggah');
         } else {
             return redirect()->route('user.uploadFiles')->with('error', 'Dokumen gagal diunggah');
@@ -78,10 +82,12 @@ class UploadFilesController extends Controller
     {
         $noregPPDB = session('noreg_ppdb');
         $dokumenPPDB = DokumenPendaftaran::where('noreg_ppdb', $noregPPDB)->first();
+        $statusDaftarOnline = StatusDaftarOnline::where('noreg_ppdb', session('noreg_ppdb'))->first();
         $data = [
             'title' => 'Dokumen Pendaftaran',
             'active' => 'dokumen-pendaftaran',
-            'dokumenPPDB' => $dokumenPPDB
+            'dokumenPPDB' => $dokumenPPDB,
+            'statusDaftarOnline' => $statusDaftarOnline,
         ];
 
         return view('user.dokumen-pendaftaran', $data);
