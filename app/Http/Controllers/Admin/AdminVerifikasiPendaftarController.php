@@ -26,7 +26,7 @@ class AdminVerifikasiPendaftarController extends Controller
     {
         try {
             $biodata = Biodata::where('noreg_ppdb', $noreg_ppdb)->first();
-            $biodata->is_accepted = 1;
+            $biodata->is_accepted = "1";
             $biodata->save();
             return redirect()->back()->with('success', 'Pendaftar berhasil diverifikasi');
         } catch (\Exception $e) {
