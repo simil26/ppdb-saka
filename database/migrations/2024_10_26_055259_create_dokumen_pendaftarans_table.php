@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('kip')->default('-');
             $table->string('kis')->default('-');
             $table->string('kks')->default('-');
+            $table->string('kps')->default('-');
             $table->string('pkh')->default('-');
             $table->timestamps();
         });
