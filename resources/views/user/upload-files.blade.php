@@ -54,7 +54,7 @@
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input type="file" name="ijazah" class="custom-file-input" id="ijazah">
-                                        <label class="custom-file-label" for="ijazah">Choose file</label>
+                                        <label class="custom-file-label" for="ijazah">{{ $dokumenPendaftaran->ijazah ? $dokumenPendaftaran->ijazah : 'Choose file' }}</label>
                                     </div>
                                 </div>
                             </div>
@@ -63,7 +63,7 @@
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input type="file" name="kk" class="custom-file-input" id="kk">
-                                        <label class="custom-file-label" for="kk">Choose file</label>
+                                        <label class="custom-file-label" for="kk">{{ $dokumenPendaftaran->kk ? $dokumenPendaftaran->kk : 'Choose file' }}</label>
                                     </div>
                                 </div>
                             </div>
@@ -72,7 +72,7 @@
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input type="file" name="akte" class="custom-file-input" id="akte">
-                                        <label class="custom-file-label" for="akte">Choose file</label>
+                                        <label class="custom-file-label" for="akte">{{ $dokumenPendaftaran->akte ? $dokumenPendaftaran->akte : 'Choose file' }}</label>
                                     </div>
                                 </div>
                             </div>
@@ -81,7 +81,7 @@
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input type="file" name="ktp" class="custom-file-input" id="ktp">
-                                        <label class="custom-file-label" for="ktp">Choose file</label>
+                                        <label class="custom-file-label" for="ktp">{{ $dokumenPendaftaran->ktp ? $dokumenPendaftaran->ktp : 'Choose file' }}</label>
                                     </div>
                                 </div>
                             </div>
@@ -92,7 +92,7 @@
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input type="file" name="kip" class="custom-file-input" id="kip">
-                                        <label class="custom-file-label" for="kip">Choose file</label>
+                                        <label class="custom-file-label" for="kip">{{ $dokumenPendaftaran->kip ? $dokumenPendaftaran->kip : 'Choose file' }}</label>
                                     </div>
                                 </div>
                             </div>
@@ -101,7 +101,7 @@
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input type="file" name="kis" class="custom-file-input" id="kis">
-                                        <label class="custom-file-label" for="kis">Choose file</label>
+                                        <label class="custom-file-label" for="kis">{{ $dokumenPendaftaran->kis ? $dokumenPendaftaran->kis : 'Choose file' }}</label>
                                     </div>
                                 </div>
                             </div>
@@ -110,7 +110,7 @@
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input type="file" name="kks" class="custom-file-input" id="kks">
-                                        <label class="custom-file-label" for="kks">Choose file</label>
+                                        <label class="custom-file-label" for="kks">{{ $dokumenPendaftaran->kks ? $dokumenPendaftaran->kks : 'Choose file' }}</label>
                                     </div>
                                 </div>
                             </div>
@@ -119,7 +119,7 @@
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input type="file" name="kps" class="custom-file-input" id="kps">
-                                        <label class="custom-file-label" for="kps">Choose file</label>
+                                        <label class="custom-file-label" for="kps">{{ $dokumenPendaftaran->kps ? $dokumenPendaftaran->kps : 'Choose file' }}</label>
                                     </div>
                                 </div>
                             </div>
@@ -128,7 +128,7 @@
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input type="file" name="pkh" class="custom-file-input" id="pkh">
-                                        <label class="custom-file-label" for="pkh">Choose file</label>
+                                        <label class="custom-file-label" for="pkh">{{ $dokumenPendaftaran->pkh ? $dokumenPendaftaran->pkh : 'Choose file' }}</label>
                                     </div>
                                 </div>
                             </div>
