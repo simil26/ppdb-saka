@@ -8,6 +8,7 @@ use App\Models\DataPeriodik;
 use App\Models\DokumenPendaftaran;
 use App\Models\StatusDaftarOnline;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class UploadFilesController extends Controller
 {
@@ -19,12 +20,20 @@ class UploadFilesController extends Controller
         $statusActiveFieldKesejahteraan = DataKesejahteraan::where('noreg_ppdb', session('noreg_ppdb'))->first();
         $statusDaftarOnline = StatusDaftarOnline::where('noreg_ppdb', session('noreg_ppdb'))->first();
 
+        $dokumenPendaftaran = [];
+
+        if (DokumenPendaftaran::where('noreg_ppdb', session('noreg_ppdb'))->exists()) {
+            $dokumenPendaftaran = DokumenPendaftaran::where('noreg_ppdb', session('noreg_ppdb'))->first();
+        }
+
         $data = [
             'title' => 'Unggah Dokumen',
             'active' => 'upload-files',
             'statusActiveFieldKesejahteraan' => $statusActiveFieldKesejahteraan,
             'statusDaftarOnline' => $statusDaftarOnline,
+            'dokumenPendaftaran' => $dokumenPendaftaran,
         ];
+
 
         return view('user.upload-files', $data);
     }
@@ -67,6 +76,10 @@ class UploadFilesController extends Controller
             }
         }
 
+        // $request->session()->forget('editFiles');
+        if (DokumenPendaftaran::where('noreg_ppdb', $noregPPDB)->exists()) {
+            return redirect()->route('user.uploadFiles.selesai')->with('success', 'Dokumen berhasil diperbaharui');
+        }
         $uploadAttempt = DokumenPendaftaran::create($dokumenPPDB);
 
         if ($uploadAttempt) {
@@ -89,7 +102,6 @@ class UploadFilesController extends Controller
             'dokumenPPDB' => $dokumenPPDB,
             'statusDaftarOnline' => $statusDaftarOnline,
         ];
-
         return view('user.dokumen-pendaftaran', $data);
     }
 }
