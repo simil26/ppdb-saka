@@ -57,7 +57,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    @if ($statusDaftarOnline['statusDokumenPendaftaran' == '1'])
+                    @if ($statusDaftarOnline['statusDokumenPendaftaran'] == '1')
                         <a href="{{ route('user.uploadFiles.selesai') }}" class="nav-link {{ $active == 'dokumen-pendaftaran' ? 'active' : '' }}">
                             <i class="nav-icon fas fa-file-alt"></i>
                             <p>
