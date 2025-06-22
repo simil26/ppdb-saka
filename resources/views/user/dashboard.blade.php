@@ -27,14 +27,14 @@
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <div class="col-12">
-                        @if ($biodata && $dataOrangTua && $dataPeriodik && $dataKesejahteraan && $uploadFiles)
+                        @if ($statusDaftarOnline['statusFinalisasi'] == '1')
                             <div class="callout callout-success bg-success">
                                 <h3>
                                     Selamat datang! Calon Peserta Didik dengan No. {{ session('noreg_ppdb') }} <br>
                                     Anda sudah menyelesaikan proses pendaftaran Penerimaan Peserta Didik Baru.
                                 </h3>
                                 <p>
-                                    Untuk hasil seleksi dan informasi lebih lanjut, silahkan tunggu informasi pengumuman pada tanggal yang sudah ditentukan.
+                                    Silahkan klik tombol <b>Tes Psikotes</b> pada kolom <b>Status Pendaftaran</b> untuk mengikuti Tes Psikotes Online.
                                 </p>
                             </div>
                         @else
@@ -166,7 +166,18 @@
                                                 @endif
                                             </div>
                                             <div>
-                                                <i class="fas fa-exclamation bg-gray"></i>
+                                                <i class="fas {{ $statusDaftarOnline['statusFinalisasi'] == '1' ? 'fa-check bg-green' : 'fa-clock bg-gray' }}"></i>
+                                                @if ($statusDaftarOnline['statusFinalisasi'] == '1')
+                                                    <div class="timeline-item">
+                                                        <h3 class="timeline-header text-blue font-weight-bold">Link Psikotes</h3>
+                                                        <div class="timeline-body">
+                                                            <a href="#" class="btn btn-primary">
+                                                                <i class="fas fa-edit"></i>
+                                                                Psikotes Online
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -195,7 +206,7 @@
                                         <div class="timeline">
                                             <!-- timeline item -->
                                             <div>
-                                                <i class="fas {{ $statusDaftarOnline['statusDokumenPendaftaran'] == '1' ? 'fa-check bg-green' : 'fa-exclamation bg-yellow' }}"></i>
+                                                <i class="fas {{ $statusDaftarOnline['statusFinalisasi'] == '1' ? 'fa-check bg-green' : 'fa-exclamation bg-yellow' }}"></i>
                                                 <div class="timeline-item">
                                                     <h3 class="timeline-header text-blue font-weight-bold">Pengisian Data Diri</h3>
 
@@ -206,7 +217,7 @@
                                             </div>
                                             <!-- END timeline item --><!-- timeline item --><!-- timeline item -->
                                             <div>
-                                                <i class="fas fa-clock bg-gray"></i>
+                                                <i class="fas {{ $statusDaftarOnline['statusFinalisasi'] == '1' ? 'fa-exclamation bg-yellow' : 'fa-clock bg-gray' }}"></i>
                                                 <div class="timeline-item">
                                                     <h3 class="timeline-header text-blue font-weight-bold">Psikotes</h3>
 

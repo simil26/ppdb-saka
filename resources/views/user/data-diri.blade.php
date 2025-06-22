@@ -44,7 +44,7 @@
                     </div>
                 @endif
                 @if ($biodata)
-                    <div class="row my-2">
+                    <div class="row my-2 {{ $statusDaftarOnline['statusFinalisasi'] == '1' ? 'd-none' : '' }}">
                         <div class="col-12">
                             <button class="btn btn-success" type="button" onclick="enabledEdit()">
                                 <i class="fas fa-edit"></i>
@@ -146,7 +146,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row {{ $statusDaftarOnline['statusFinalisasi'] == '1' ? 'd-none' : '' }}">
                             <div class="col-12">
                                 <div class="form-group d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary" disabled>Simpan</button>
@@ -248,7 +248,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row {{ $statusDaftarOnline['statusFinalisasi'] == '1' ? 'd-none' : '' }}">
                             <div class="col-12">
                                 <div class="form-group d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary">Simpan</button>
