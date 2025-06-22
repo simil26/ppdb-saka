@@ -79,6 +79,7 @@ Route::post('user/data-orang-tua/update', [DataOrangTuaController::class, 'updat
 Route::post('user/data-periodik/simpan', [DataPeriodikController::class, 'store'])->name('user.store.dataPeriodik');
 Route::post('user/data-periodik/update', [DataPeriodikController::class, 'update'])->name('user.update.dataPeriodik');
 Route::post('user/upload-files', [UploadFilesController::class, 'store'])->name('user.store.uploadFiles');
+Route::get('user/finalisasi-pendaftaran', [DashboardController::class, 'finalisasiPendaftaran'])->name('user.finalisasiPendaftaran');
 
 Route::get('admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 Route::get('admin/data-pendaftar', [AdminDataPendaftarController::class, 'index'])->name('admin.dataPendaftar');
