@@ -51,14 +51,14 @@
                                             Nama
                                         </th>
                                         <th>
-                                            NISN
+                                            NIK
                                         </th>
                                         <th>Tempat, tanggal lahir</th>
                                         <th>
-                                            Asal Sekolah
+                                            Hasil Seleksi
                                         </th>
                                         <th>
-                                            Hasil Seleksi
+                                            Dokumen Pendaftaran
                                         </th>
                                     </tr>
                                 </thead>
@@ -72,16 +72,19 @@
                                                 {{ $pendaftar->nama }}
                                             </td>
                                             <td>
-                                                {{ $pendaftar->nisn }}
+                                                {{ $pendaftar->nik }}
                                             </td>
                                             <td>
                                                 {{ $pendaftar->tempat_lahir }}, {{ $pendaftar->tanggal_lahir }}
                                             </td>
                                             <td>
-                                                {{ $pendaftar->asal_sekolah }}
+                                                {{ $pendaftar->is_accepted == 0 ? 'Pending' : 'Diterima' }}
                                             </td>
                                             <td>
-                                                {{ $pendaftar->is_accepted == 0 ? 'Pending' : 'Diterima' }}
+                                                <a href="{{ url('admin/unduh-dokumen') . '/' . $pendaftar->noreg_ppdb }}" class="btn btn-primary {{ $pendaftar->is_accepted == 0 ? 'disabled' : '' }}" id="unduh-dokumen">
+                                                    <i class="fas fa-download"></i>
+                                                    Unduh
+                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -113,16 +116,26 @@
             });
         });
 
-        const {
-            jsPDF
-        } = window.jspdf;
-
-        document.getElementById('export-pdf').addEventListener('click', function() {
+        $("#export-pdf").click(function() {
+            const {
+                jsPDF
+            } = window.jspdf;
             const doc = new jsPDF();
             doc.autoTable({
-                html: '#table-data-pendaftar'
+                html: '#table-data-pendaftar',
+                startY: 20,
+                headStyles: {
+                    fillColor: [255, 0, 0],
+                    textColor: [255, 255, 255]
+                },
+                styles: {
+                    fontSize: 10,
+                    cellPadding: 2,
+                    halign: 'center',
+                    valign: 'middle'
+                }
             });
-            doc.save('hasil-seleksi.pdf');
-        })
+            doc.save('Hasil Seleksi.pdf');
+        });
     </script>
 @endpush
