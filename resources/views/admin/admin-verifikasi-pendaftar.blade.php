@@ -56,12 +56,9 @@
                                             Nama
                                         </th>
                                         <th>
-                                            NISN
+                                            NIK
                                         </th>
                                         <th>Tempat, tanggal lahir</th>
-                                        <th>
-                                            Asal Sekolah
-                                        </th>
                                         <th>
                                             Status
                                         </th>
@@ -80,13 +77,10 @@
                                                 {{ $pendaftar->nama }}
                                             </td>
                                             <td>
-                                                {{ $pendaftar->nisn }}
+                                                {{ $pendaftar->nik }}
                                             </td>
                                             <td>
                                                 {{ $pendaftar->tempat_lahir }}, {{ $pendaftar->tanggal_lahir }}
-                                            </td>
-                                            <td>
-                                                {{ $pendaftar->asal_sekolah }}
                                             </td>
                                             <td>
                                                 {{ $pendaftar->is_accepted == 0 ? 'Pending' : 'Diterima' }}
@@ -133,7 +127,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     // Redirect ke halaman verifikasi
-                    window.location.href = "{{ url('admin/verifikasi-pendaftar') }}/" + noPendaftaran;
+                    window.location.href = "{{ url('admin/verifikasi-pendaftar') }}/" + noPendaftaran.replace(/\s/g, '');
                 }
             });
         });
