@@ -55,4 +55,12 @@ class DashboardController extends Controller
 
         return view('user.dashboard', $data);
     }
+
+    public function finalisasiPendaftaran()
+    {
+        $noregPPDB = session('noreg_ppdb');
+        StatusDaftarOnline::where('noreg_ppdb', $noregPPDB)->update(['statusFinalisasi' => '1']);
+
+        return redirect()->route('user.dashboard');
+    }
 }
