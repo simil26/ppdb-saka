@@ -31,7 +31,8 @@ class DataPeriodikController extends Controller
             'title' => 'Data Periodik',
             'active' => 'data-periodik',
             'dataPeriodik' => $dataPeriodik,
-            'dataKesejahteraan' => $dataKesejahteraan
+            'dataKesejahteraan' => $dataKesejahteraan,
+            'statusDaftarOnline' => $statusDaftarOnline,
         ];
 
         // dd($data);

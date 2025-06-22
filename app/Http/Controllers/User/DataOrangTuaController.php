@@ -29,6 +29,7 @@ class DataOrangTuaController extends Controller
             'title' => 'Data Orang Tua',
             'active' => 'data-orang-tua',
             'dataOrangTua' => $dataOrangTua,
+            'statusDaftarOnline' => $statusDaftarOnline,
         ];
         return view('user.data-orang-tua', $data);
     }

@@ -20,11 +20,15 @@ class DataDiriController extends Controller
         if ($biodataStatus['statusBiodata'] == '1') {
             $biodata = Biodata::where('noreg_ppdb', Session::get('noreg_ppdb'))->first();
         }
-
+        $statusDaftarOnline = [];
+        if (StatusDaftarOnline::where('noreg_ppdb', Session::get('noreg_ppdb'))->exists()) {
+            $statusDaftarOnline = StatusDaftarOnline::where('noreg_ppdb', Session::get('noreg_ppdb'))->first();
+        }
         $data = [
             'title' => 'Data Diri',
             'active' => 'data-diri',
-            'biodata' => $biodata
+            'biodata' => $biodata,
+            'statusDaftarOnline' => $statusDaftarOnline,
         ];
 
         return view('user.data-diri', $data);
