@@ -27,8 +27,8 @@
                 @if (session()->has('success'))
                     <div class="alert alert-success alert-dismissible">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <h5><i class="icon fas fa-check"></i> Dokumen berhasil disimpan!</h5>
-                        Dokumen yang anda unggah berhasil disimpan. Silahkan kembali ke halaman Dashboard untuk cetak bukti pendaftaran.
+                        <h5><i class="icon fas fa-check"></i> {{ session('success') }}!</h5>
+                        Dokumen yang anda unggah berhasil disimpan. Jika data sudah benar, silahkan klik tombol finalisasi.
                     </div>
                 @elseif (session()->has('error'))
                     <div class="alert alert-danger alert-dismissible">
@@ -44,6 +44,18 @@
                     </div>
                 @endif
 
+                <div class="row mb-4 {{ $statusDaftarOnline['statusFinalisasi'] == '1' ? 'd-none' : '' }}">
+                    <div class="col-12">
+                        <a href="{{ url('user/upload-files') }}" class="btn btn-warning" id="edit-ijazah">
+                            <i class="fas fa-edit"></i>
+                            Ubah Berkas Pendaftaran
+                        </a>
+                        <button class="btn btn-success" id="finalisasiPendaftaran">
+                            <i class="fas fa-check"></i>
+                            Finalisasi
+                        </button>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-3">
                         <div class="card">
@@ -159,6 +171,7 @@
 @endsection
 
 @push('scripts')
+    <script script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.17.1/sweetalert2.min.js" integrity="sha512-3E8s4JBQ3DzbrQQuVMF70TaihBTov6TlT1O9wjfrFiykjj5k5oN988+CPtzVgYJBHzdRojLLGKWxgsOeLF5X2Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         $('#tanggalLahirAyah').datetimepicker({
             format: 'YYYY-MM-DD',
@@ -171,6 +184,23 @@
 
         $(function() {
             bsCustomFileInput.init();
+        });
+
+        document.getElementById('finalisasiPendaftaran').addEventListener('click', function() {
+            // alert('Fitur finalisasi pendaftaran belum tersedia. Silahkan hubungi panitia untuk informasi lebih lanjut.');
+            Swal.fire({
+                title: 'Finalisasi Pendaftaran',
+                text: "Apakah anda yakin ingin finalisasi pendaftaran? Setelah finalisasi, anda tidak dapat mengubah data pendaftaran.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, finalisasi!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "{{ route('user.finalisasiPendaftaran') }}";
+                }
+            });
         });
     </script>
 @endpush
