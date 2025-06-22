@@ -86,3 +86,4 @@ Route::get('admin/data-pendaftar', [AdminDataPendaftarController::class, 'index'
 Route::get('admin/verifikasi-pendaftar', [AdminVerifikasiPendaftarController::class, 'index'])->name('admin.verifikasiPendaftar');
 Route::get('admin/hasil-seleksi', [HasilSeleksiController::class, 'index'])->name('admin.hasilSeleksi');
 Route::get('admin/verifikasi-pendaftar/{noreg_ppdb}', [AdminVerifikasiPendaftarController::class, 'verifikasi'])->name('admin.verifikasiPendaftar.verifikasi');
+Route::get('admin/unduh-dokumen/{noreg_ppdb}', [HasilSeleksiController::class, 'unduhDokumen'])->name('admin.hasilSeleksi.unduhDokumen');
