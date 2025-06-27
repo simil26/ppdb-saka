@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Biodata;
 use Barryvdh\DomPDF\Facade\Pdf;
-use Illuminate\Http\Request;
+use App\Exports\ExportHasilExcel;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ExportHasilController extends Controller
 {
@@ -19,5 +20,12 @@ class ExportHasilController extends Controller
         $pdf->setPaper('A4', 'landscape');
 
         return $pdf->stream('laporan-hasil-pendaftar.pdf');
+    }
+
+    public function exportExcel()
+    {
+        // Logic to generate Excel report
+        $fileName = 'Hasil Seleksi ' . now()->format('d-m-Y') . '.xlsx';
+        return Excel::download(new ExportHasilExcel, $fileName);
     }
 }
