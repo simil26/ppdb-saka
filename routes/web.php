@@ -12,6 +12,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ExportHasilController;
 use App\Http\Controllers\User\DataDiriController;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\UploadFilesController;
@@ -87,3 +88,4 @@ Route::get('admin/verifikasi-pendaftar', [AdminVerifikasiPendaftarController::cl
 Route::get('admin/hasil-seleksi', [HasilSeleksiController::class, 'index'])->name('admin.hasilSeleksi');
 Route::get('admin/verifikasi-pendaftar/{noreg_ppdb}', [AdminVerifikasiPendaftarController::class, 'verifikasi'])->name('admin.verifikasiPendaftar.verifikasi');
 Route::get('admin/unduh-dokumen/{noreg_ppdb}', [HasilSeleksiController::class, 'unduhDokumen'])->name('admin.hasilSeleksi.unduhDokumen');
+Route::get('admin/export-pdf', [ExportHasilController::class, 'exportPdf'])->name('admin.exportPdf');
