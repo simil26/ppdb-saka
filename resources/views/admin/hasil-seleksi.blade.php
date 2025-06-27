@@ -27,21 +27,21 @@
                 <div class="row mt-3">
                     <div class="col-12">
                         <div class="btn-group">
-                            <button type="button" id="export-pdf" class="btn btn-danger">
+                            <a href="{{ url('admin/export-pdf') }}" target="_blank" id="export-pdf" class="btn btn-danger">
                                 <i class="fas fa-file-pdf"></i>
                                 PDF
-                            </button>
-                            <button type="button" id="export-excel" class="btn btn-success">
+                            </a>
+                            <a href="{{ url('admin/export-excel') }}" target="_blank" id="export-excel" class="btn btn-success">
                                 <i class="fas fa-file-excel"></i>
                                 Excel
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
                 <div class="tabel-data-pendaftar-wrapper bg-light mx-0 mt-3">
                     <div class="card rounded-4 shadow border-0">
                         <div class="card-body">
-                            <table id="table-data-pendaftar" class="table table-striped">
+                            {{-- <table id="table-data-pendaftar" class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th>
@@ -89,6 +89,53 @@
                                         </tr>
                                     @endforeach
                                 </tbody>
+                            </table> --}}
+                            <table id="tabel-export" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            No Pendaftaran
+                                        </th>
+                                        <th>
+                                            NIK
+                                        </th>
+                                        <th>
+                                            Nama
+                                        </th>
+                                        <th>Tempat, tanggal lahir</th>
+                                        <th>
+                                            Jenis Kelamin
+                                        </th>
+                                        <th>
+                                            Hasil Seleksi
+                                        </th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($dataPendaftar as $pendaftar)
+                                        <tr>
+                                            <td>
+                                                {{ $pendaftar->noreg_ppdb }}
+                                            </td>
+                                            <td>
+                                                {{ $pendaftar->nik }}
+                                            </td>
+                                            <td>
+                                                {{ $pendaftar->nama }}
+                                            </td>
+                                            <td>
+                                                {{ $pendaftar->tempat_lahir }}, {{ $pendaftar->tanggal_lahir }}
+                                            </td>
+                                            <td>
+                                                {{ $pendaftar->jenis_kelamin }}
+                                            </td>
+                                            <td>
+                                                {{ $pendaftar->is_accepted == 0 ? 'Pending' : 'Diterima' }}
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -106,36 +153,18 @@
     <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
     <script src="https://unpkg.com/jspdf-autotable@latest/dist/jspdf.plugin.autotable.js"></script>
     <script>
-        $('#table-data-pendaftar').DataTable();
+        // $('#table-data-pendaftar').DataTable();
+        // $('#table-export').DataTable({
+        //     scrollX: true
+        // });
+        new DataTable('#table-export', {})
         $("#export-excel").click(function() {
-            $("#table-data-pendaftar").table2excel({
+            $("#table-export").table2excel({
                 exclude: ".excludeThisClass",
                 name: "Hasil Seleksi.xlsx",
                 filename: "Hasil Seleksi",
                 fileext: ".xlsx",
             });
-        });
-
-        $("#export-pdf").click(function() {
-            const {
-                jsPDF
-            } = window.jspdf;
-            const doc = new jsPDF();
-            doc.autoTable({
-                html: '#table-data-pendaftar',
-                startY: 20,
-                headStyles: {
-                    fillColor: [255, 0, 0],
-                    textColor: [255, 255, 255]
-                },
-                styles: {
-                    fontSize: 10,
-                    cellPadding: 2,
-                    halign: 'center',
-                    valign: 'middle'
-                }
-            });
-            doc.save('Hasil Seleksi.pdf');
         });
     </script>
 @endpush
