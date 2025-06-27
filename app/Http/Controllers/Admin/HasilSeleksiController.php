@@ -14,13 +14,16 @@ class HasilSeleksiController extends Controller
         if (!session()->has('username')) {
             return redirect()->route('admin.login');
         }
-        $biodata = Biodata::all();
+        $dataPendaftar = Biodata::all();
+
+        // dd($dataPendaftar);
         $data = [
             'title' => 'Hasil Seleksi',
             'active' => 'hasil-seleksi',
             'usingDatatables' => true,
-            'dataPendaftar' => $biodata
+            'dataPendaftar' => $dataPendaftar,
         ];
+
 
         return view('admin.hasil-seleksi', $data);
     }
