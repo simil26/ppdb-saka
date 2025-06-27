@@ -89,3 +89,4 @@ Route::get('admin/hasil-seleksi', [HasilSeleksiController::class, 'index'])->nam
 Route::get('admin/verifikasi-pendaftar/{noreg_ppdb}', [AdminVerifikasiPendaftarController::class, 'verifikasi'])->name('admin.verifikasiPendaftar.verifikasi');
 Route::get('admin/unduh-dokumen/{noreg_ppdb}', [HasilSeleksiController::class, 'unduhDokumen'])->name('admin.hasilSeleksi.unduhDokumen');
 Route::get('admin/export-pdf', [ExportHasilController::class, 'exportPdf'])->name('admin.exportPdf');
+Route::get('admin/export-excel', [ExportHasilController::class, 'exportExcel'])->name('admin.exportExcel');
