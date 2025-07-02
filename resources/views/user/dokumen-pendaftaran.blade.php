@@ -46,7 +46,7 @@
 
                 <div class="row mb-4 {{ $statusDaftarOnline['statusFinalisasi'] == '1' ? 'd-none' : '' }}">
                     <div class="col-12">
-                        <a href="{{ url('user/upload-files') }}" class="btn btn-warning" id="edit-ijazah">
+                        <a href="{{ url('user/upload-files') }}" class="btn btn-warning" id="edit-pas_foto">
                             <i class="fas fa-edit"></i>
                             Ubah Berkas Pendaftaran
                         </a>
@@ -60,10 +60,10 @@
                     <div class="col-3">
                         <div class="card">
                             <div class="card-title pt-3 py-2">
-                                <h5 class="text-center">{{ strtoupper(substr($dokumenPPDB->ijazah, 18, 6)) }}</h5>
+                                <h5 class="text-center">{{ strtoupper(substr($dokumenPPDB->pas_foto, 18, 3)) . ' FOTO' }}</h5>
                             </div>
                             <div class="card-body">
-                                <img src="{{ url('assets/files/' . session('noreg_ppdb') . '/' . $dokumenPPDB->ijazah) }}" alt="File Ijazah" id="ijazah" style="width: 100%">
+                                <img src="{{ url('assets/files/' . session('noreg_ppdb') . '/' . $dokumenPPDB->pas_foto) }}" alt="File pas_foto" id="pas_foto" style="width: 100%">
                             </div>
                         </div>
                     </div>
