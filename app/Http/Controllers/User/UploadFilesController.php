@@ -43,7 +43,7 @@ class UploadFilesController extends Controller
         $noregPPDB = session('noreg_ppdb');
 
         $files = [
-            'ijazah' => $request->file('ijazah') ? $request->file('ijazah') : '-',
+            'pas_foto' => $request->file('pas_foto') ? $request->file('pas_foto') : '-',
             'kk' => $request->file('kk') ? $request->file('kk') : '-',
             'akte' => $request->file('akte') ? $request->file('akte') : '-',
             'ktp' => $request->file('ktp') ? $request->file('ktp') : '-',
@@ -56,7 +56,7 @@ class UploadFilesController extends Controller
 
         $dokumenPPDB = [
             'noreg_ppdb' => $noregPPDB,
-            'ijazah' => '-',
+            'pas_foto' => '-',
             'kk' => '-',
             'akte' => '-',
             'ktp' => '-',
